@@ -1,0 +1,48 @@
+#!/bin/bash
+
+set -o errexit
+
+[[ $( command -v butler ) ]] || { echo error: butler required; exit 1; }
+
+clear
+
+#
+
+mode=${1:-"staging"}
+
+[[ $mode == "staging" || $mode == "production" ]] || {
+	echo error: unrecognized mode "$mode"
+	exit 1
+}
+
+
+
+#
+
+rm --recursive --force /a/local/publish/$mode
+mkdir --parents $_
+cd $_
+
+[[ $mode == "staging" ]] && {
+	build debug
+	build profile
+}
+
+build release
+
+[[ $mode == "staging" ]] && {
+	cp /a/local/build/debug/draugb.exe   ./draugb_debug.exe
+	cp /a/local/build/profile/draugb.exe ./draugb_profile.exe
+	cp /a/local/vend/bin/ds5w_X64.dll  .
+}
+
+cp /a/local/build/release/draugb.exe .
+cp /a/static/.itch.toml              .
+cp --recursive /a/local/build/release/data ./data
+
+butler validate /a/local/publish/$mode
+
+channel="belimoth/draugb:windows"
+[[ $mode == "staging" ]] && channel="belimoth/draugb-staging:windows"
+
+butler push /a/local/publish/$mode $channel

@@ -1,0 +1,4 @@
+[[actions]]
+name  = "play"
+path  = "draugb.exe"
+scope = "profile:me"

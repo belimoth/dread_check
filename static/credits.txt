@@ -1,0 +1,65 @@
+DRAUGB
+
+Zachary Alexander
+belimoth.com
+Code, Design
+
+----------8<----------
+
+TESTING
+
+Andie Nare
+Aubrey Serr
+Derek Sneed
+James Murff
+Joseph Silverman
+Peter Queckenstedt
+Ray "Blambo" Chen
+
+----------8<----------
+
+CHARACTER MODELS
+
+I've been kitbashing
+these from things I
+download and then
+remeshing and then
+decimating sorry I
+didn't keep track
+of the bits todo
+
+----------8<----------
+
+ASSETS
+
+Richard Whitelock
+richardwhitelock.com
+AllSky
+
+lodgeb84
+blendswap.com/profile/97026
+Low Poly Weapon Pack
+
+----------8<----------
+
+FONTS
+
+Ivano
+itch.io/somepx
+Bacteria.ttf
+
+----------8<----------
+
+AUDIO
+
+Thievery
+Fraud
+Etc
+
+----------8<----------
+
+CODE LIBRARIES
+
+Ludwig Füchsl
+github.com/ohjurot
+DS5 API

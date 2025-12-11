@@ -1,0 +1,5 @@
+#!/bin/bash
+
+reg query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\AppModelUnlock"                                      || { echo error: developer mode required; exit 1; }
+reg query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\AppModelUnlock" /v AllowDevelopmentWithoutDevLicense || { echo error: developer mode required; exit 1; }
+# todo fail if value is 0

@@ -1,0 +1,261 @@
+<p>Prototype for a collaborative&nbsp;survival shooter.&nbsp;<br>Gamepad STRONGLY recommended.</p>
+
+<p>
+<a target="_blank" href="https://itch.io/app">Install the itch app</a><br>
+<a href="http://tinyurl.com/draugb">Launch DRAUGB in the itch app</a><br>
+<a target="_blank" href="http://bsky.app/profile/belimoth.com">Follow on bluesky for development updates that only lie</a><br>
+<a target="_blank" href="https://discord.gg/tABmNbQVz9">Join the discord for development updates that only tell the truth</a>
+</p>
+
+<p><strong>Development</strong></p>
+<pre>
+2010 - designed
+2015 - written
+2020 - prototyped movement, controls, and graphics for 7DFPS 2020
+2021 - more work on movement, submitted to 7DFPS 2021
+2025 - added MAZE level for PROCJAM 2025
+2025 - more work on controls, submitted to 7DFPS 2025
+</pre>
+
+<p><a href="https://itch.io/jam/procjam"><strong>PROCJAM 2025</strong></a></p>
+
+<p>For this jam I added a level called MAZE which is an attempt to do something no one has ever done before: make a 3d version of Castle Wolfenstein (1984).</p>
+
+<p><strong>Design</strong></p>
+
+<p>DRAUGB is a poem about my relationship to the Call of Duty franchise. Some of our history together:</p>
+
+<ul>
+<li>In 2008 Call of Duty: World at War included Zombie Mode as a reward for completing the campaign. CRAUGB asks: what if Treyarch spent the whole budget on that instead? What if they didn't have a budget?</li>
+<li>Between 2009 and 2019 Activision Blizzard published 11 other Call of Duty titles. I didn't play any of these.</li>
+<li>In 2020 I was asked by Infinity Ward "How much will money will you pay to download 100GB of Call of Duty: Warzone? Will you pay nothing? We have your friends already." After much contemplation, DRAUBG answers: in order to play murder online with MY friends I will need to receive an annual salary of $170,000.</li>
+<li>In 2023 Microsoft launched its first Microsoft Azure region in occupied Palestine. It includes multiple facilities with availability zones designed to provide internet services to local organizations and their illegal surveillance and apartheid system.</li>
+<li>At some point I played APE OUT, holy shit have you played APE OUT? That's way better than whatever I was trying to do.</li>
+</ul>
+
+<p><strong>Frequently Asked Questions</strong></p>
+
+<ul>
+<li>"Is multiplayer implemented yet?" No.</li>
+<li>"Is combat implemented yet?" No.</li>
+<li>"What engine do you use?" No.</li>
+</ul>
+
+<p><strong>Controls</strong></p>
+
+<pre>
+Quit       | Esc        | --       | --
+--―――――――――|―――――――――――――――――――――――|―――--
+FEET       |                       |
+--―――――――――|―――――――――――――――――――――――|―――--
+Move       | WASD       | L        | LS
+Run, Jog   | Shift      | L3       | LSB
+Jump       | Space      | Cross    | A
+Crouch     | Ctrl, C    | Circle   | B
+--――――――――――――――――――――――|――――――――――――――--
+HEAD                    |
+--――――――――――――――――――――――|――――――――――――――--
+Look       | Mouse      | R        | RS
+Walk, Aim  | Mouse 3, F | R3       | RSB
+--―――――――――|―――――――――――――――――――――――|―――--
+HANDS      |                       |
+--―――――――――|―――――――――――――――――――――――|―――--
+Fire       | Mouse 1    | R2       | RT
+Rack       | Mouse 2    | L2       | LT
+Offhand    | Q          | L1       | LB
+Hand       | E          | R1       | RB
+--――――――――――――――――――――――|――――――――――――――--
+HANDS (GOOFY)           |
+--――――――――――――――――――――――|――――――――――――――--
+Rack       | Mouse 1    | R2       | RT
+Fire       | Mouse 2    | L2       | LT
+Hand       | Q          | L1       | LB
+Offhand    | E          | R1       | RB
+--―――――――――|―――――――――――――――――――――――|―――--
+ITEMS      |                       |
+--―――――――――|―――――――――――――――――――――――|―――--
+Reload     | R          | Square   | X
+Use, Belt  | Tab        | Triangle | Y
+Gear       | 1234567890 | DPad     | DPad
+Gear       | Mouse 4, Mouse 5, Mouse Wheel
+--――――――――――――――――――――――|――――――――――――――--
+OTHER                   |
+--――――――――――――――――――――――|――――――――――――――--
+Menu       | Enter      | Start    | Menu
+Clay       | ~, Ctrl ~  | Select   | View
+--―――――――――――――――――――――――――――――――――――――--
+MOVES - WIP
+--―――――――――――――――――――――――――――――――――――――--
+Jump   ↕ = Dive
+Jump   ↔ = Dive
+Crouch ↕ = Stance
+Crouch ↔ = Spin
+Run + Crouch   = Dive
+Jog + Crouch ↑ = Dropkick
+Jog + Crouch ↔ = Dive + Spin
+Jog + Crouch ↓ = Slide
+Run + Dive + Run = Roll
+--―――――――――――――――――――――――――――――――――――――--
+GEAR
+--―――――――――――――――――――――――――――――――――――――--
+Gear ↑ = Head item
+Gear ↔ = Gear items
+Gear ↓ = Empty hands
+--―――――――――――――――――――――――――――――――――――――--
+GUNS
+--―――――――――――――――――――――――――――――――――――――--
+Reload ↑ = Load
+Reload ← = Change ammo type
+Reload → = Equip magazine
+Reload ↓ = Unload
+--―――――――――――――――――――――――――――――――――――――--
+BELT
+--―――――――――――――――――――――――――――――――――――――--
+Belt ↕ = Belt items
+Belt ← = Swap
+Belt → = Away
+--―――――――――――――――――――――――――――――――――――――--
+MOVES - WIP
+--―――――――――――――――――――――――――――――――――――――--
+Hand + Offhand = Prepare
+Prepare + Fire = Throw
+Prepare + Rack = Drop
+--―――――――――――――――――――――――――――――――――――――--
+USING - WIP
+--―――――――――――――――――――――――――――――――――――――--
+Use to interact with things in the world
+Use nothing to equip/unequip belt items
+--―――――――――――――――――――――――――――――――――――――--
+GRABBING - WIP
+--―――――――――――――――――――――――――――――――――――――--
+Grab a corner or ledge to mount gun
+Grab a player from behind to stack up
+Take any item from another player's hands
+Keep or push to prevent taking
+--―――――――――――――――――――――――――――――――――――――--
+TRAVERSAL - WIP
+--―――――――――――――――――――――――――――――――――――――--
+Hold crouch to glide across terrain
+Hold jump to hop, climb over terrain
+Menu while running to autorun
+--―――――――――――――――――――――――――――――――――――――--
+WEAPONS
+--―――――――――――――――――――――――――――――――――――――--
+Winchester Model 1897 Shotgun
+- Rack, reload, unrack to chamber load
+- Hold down the trigger and rack to slam
+--―――――――――――――――――――――――――――――――――――――--
+United States Model 1917 Revolver
+- Hold down the trigger and rack to fan
+--―――――――――――――――――――――――――――――――――――――--
+AUTOPAD AND HALFPAD
+--―――――――――――――――――――――――――――――――――――――--
+Switch between mouse, keyboard, and
+gamepad at will; The face buttons move
+to the dpad while using the mouse
+--―――――――――――――――――――――――――――――――――――――--
+GYRO - WIP
+--―――――――――――――――――――――――――――――――――――――--
+Use a PS5 controller for gyro aim
+--―――――――――――――――――――――――――――――――――――――--
+HAPTICS - WIP
+--―――――――――――――――――――――――――――――――――――――--
+Use a PS5 controller for trigger haptics
+</pre>
+
+<p>Pick an album to listen to while you play for the full experience:</p>
+
+<p>
+<a href="https://djseinfeld.bandcamp.com/album/sakura-ep"                               >SAKURA by dj seinfeld</a><br>
+<a href="https://ternesc.bandcamp.com/album/many-many-pings"                            >MANY MANY PINGS by blawan</a><br>
+<a href="https://karenn.bandcamp.com/album/grapefruit-regret"                           >GRAPEFRUIT REGRET by karenn</a><br>
+<a href="https://lockedclub.bandcamp.com/album/ep"                                      >LOMAY by locked club</a><br>
+<a href="https://megadrive.bandcamp.com/album/198xad-2"                                 >198XAD by mega drive</a><br>
+<a href="https://neboyatsya.bandcamp.com/album/ne-boyatsya-ep"                          >NE BOYAT'SYA by any act</a><br>
+<a href="https://jamesholden.bandcamp.com/album/the-idiots-are-winning"                 >THE IDIOTS ARE WINNING by james holden</a><br>
+<a href="https://djrozwell.bandcamp.com/album/none-of-this-is-real"                     >NONE OF THIS IS REAL by dj rozwell</a><br>
+<a href="https://nmesh.bandcamp.com/album/dream-sequins"                                >DREAM SEQUINS by nmesh</a><br>
+<a href="https://headstrongrecords.bandcamp.com/album/sleep-of-reason"                  >SLEEP OF REASON by randomer</a><br>
+<a href="https://rossfromfriends.bandcamp.com/album/family-portrait-2"                  >FAMILY PORTRAIT by ross from friends</a><br>
+<a href="https://laurenbousfieldanyev3r.bandcamp.com/album/tetsuo-the-iron-man-revisted">TETSUO: THE IRON MAN REVISITED by in-house pharmacy</a><br>
+<a href="https://blawan.bandcamp.com/album/sickelixir"                                  >SICK ELIXER by blawan</a><br>
+<a href="https://lockedclub.bandcamp.com/album/irak"                                    >IRAK by locked club</a><br>
+</p>
+
+<p>Here's a timeline of some reference games:</p>
+
+<pre>
+1996 - Marathon Infinity
+1996 - Zero Population Count
+1998 - Half Life
+1999 - Command & Conquer: Tiberian Sun
+2000 - Perfect Dark
+2000 - Command & Conquer: Red Alert 2
+2000 - Soldier of Fortune
+2002 - TimeSplitters 2
+2002 - Command & Conquer: Renegade
+2002 - Half Life: The Specialists Mod
+2003 - Halo: Combat Evolved
+2004 - Doom 3
+2004 - Metal Gear Solid 3: Snake Eater
+2005 - Project Snowblind
+2005 - Resident Evil 4
+2007 - Bioshock
+2007 - Medal of Honor: Airborne
+2008 - Call of Duty: World at War
+2008 - Dead Space
+2008 - Fallout 3
+2009 - Left 4 Dead 2
+2009 - Red Faction Guerilla
+2010 - Fallout: New Vegas
+2010 - Kane & Lynch 2: Dog Days
+2010 - Lost Planet 2
+2010 - MAG
+2011 - E.Y.E: Divine Cybermancy
+2012 - Natural Selection 2
+2013 - Payday 2
+2013 - Arma II: DayZ Mod
+2014 - Alien: Isolation
+</pre>
+
+<p>Here's some other games I like that explore similar ideas:</p>
+
+<p>
+<a href="https://www.wolfire.com/receiver"                         >Receiver (2012) by wolfire</a><br>
+<a href="https://www.crypticsea.com/subrosa"                       >Sub Rosa (2012) by cryptic sea</a><br>
+<a href="https://en.wikipedia.org/wiki/Sir,_You_Are_Being_Hunted"  >Sir, You Are Being Hunted(2014) by big robot</a><br>
+<a href="https://www.ubisoft.com/en-us/game/far-cry/far-cry-primal">Far Cry: Primal (2016) by ubisoft montreal</a><br>
+<a href="https://pubg.com"                                         >PUBG: Battlegrounds (2017)</a><br>
+<a href="https://endnightgames.com/games/the-forest"               >The Forest (2018) by endnight</a><br>
+<a href="https://generationzero.com"                               >Generation Zero (2018) by avalanche</a><br>
+<a href="https://www.konami.com/mg/survive"                        >Metal Gear Survive (2018) by konami</a><br>
+<a href="https://subnautica.com"                                   >Subnautica (2018) by unknown worlds</a><br>
+<a href="https://voidbastards.com"                                 >Void Bastards (2019) by blue manchu</a><br>
+<a href="https://www.receiver2.com"                                >Receiver 2 (2020) by wolfire</a><br>
+<a href="https://lemaitre-bros.itch.io/babbdi"                     >BABBDI (2022) by lemaitre bros</a><br>
+<a href="https://www.abioticfactor.com"                            >Abiotic Factor (2025) by deep field</a><br>
+<a href="https://blendogames.com/skindeep"                         >Skin Deep (2025) by blendo</a><br>
+<a href="https://www.timesplittersrewind.com"                      >TimeSplitters: Rewind (2025)</a><br>
+<a href="https://w3dhub.com/games/tiberian-sun-reborn"             >Tiberian Sun: Reborn (2025) by w3d hub</a>
+</p>
+
+<p>Feel free to make suggestions! Here are the suggestions I have already received:</p>
+
+<p>Escape from Tarkov (2016)
+<br>Call of Duty: Warzone (2020)
+<br>Helldivers 2 (2024)
+<br>Arc Raiders (2025)
+<br>Battlefield 6 (2025)
+</p>
+
+<p><strong>Requirements</strong></p>
+
+<ul>
+<li>Windows 10 (64-bit), I'll do more platforms later
+<li>A lot of psychological horror media goes with "and everything that happened was the racing thoughts of a dying man" but I would like you to consider that those are the only kinds of thoughts anyone has ever had
+<li>That doesn't have anything to do with the game please:
+</ul>
+
+<p><strong>Installation</strong></p>
+
+<p>Install with the <a target="_blank" href="https://itch.io/app">itch app</a> to avoid SmartScreen, etc.<br>Browse to <a target="_blank" href="http://tinyurl.com/draugb">itch://games/1303663</a> if you already have the itch app installed.</p>

@@ -1,0 +1,66 @@
+#!/bin/bash
+
+set -o errexit
+
+[[ $SHLVL -gt 2 ]] || clear
+
+echo building...
+
+#
+
+mode=${1:-"profile"}
+
+[[ $mode == "debug" || $mode == "profile" || $mode == "release" ]] || {
+	echo error: unrecognized mode "$mode"
+	exit 1
+}
+
+echo mode: $mode
+
+#
+
+rm --recursive --force /a/local/build/$mode
+mkdir --parents        /a/local/build/$mode
+cd                     /a/local/build/$mode
+
+# msvc
+
+source msvc.sh
+# rc -nologo -fo main.res a:/source/main.rc
+cl @a:/script/flag/$mode
+[[ -f /a/static/manifest.xml ]] || link -nologo /a/local/build/$mode/main.obj -libpath:a:/local/vend/lib -manifest -manifestfile:a:/static/manifest.xml -out:a:/local/build/$mode/draugb.exe
+mt -nologo -manifest a:/static/manifest.xml -outputresource:a:/local/build/$mode/draugb.exe;#1
+
+# clang
+
+[[ $mode == "debug"   ]] && { true; }
+[[ $mode == "profile" ]] && { true; }
+[[ $mode == "release" ]] && { true; }
+
+# todo
+
+#
+
+[[  $mode == "release"  ]] && {
+	rm --force /a/local/build/release/main.obj
+	rm --force /a/local/build/release/data
+	cp --recursive /a/shader /a/local/data
+	cp --recursive /a/local/data /a/local/build/release
+	rm --recursive --force /a/local/build/release/data/debug
+	rm --recursive --force /a/local/build/release/data/resources
+	rm --recursive --force /a/local/build/release/data/wolf
+	# rm --recursive --force /a/local/build/release/data/shader/wolf
+}
+
+# fused zip
+
+# [[ $mode == "release" ]] && {
+# 	rm --force /a/local/build/release/data.zip
+# 	zip -0 --recurse-paths/a/local/build/release/data.zip ./data --exclude .\\data\\debug\\*
+# 	mkdir --parents /a/local/build/release-fused
+# 	cat /a/local/build/release/draugb.exe /a/local/build/release/data.zip > /a/local/build/release-fused/draugb.exe
+# }
+
+#
+
+[[ $SHLVL -gt 2 ]] || echo ok

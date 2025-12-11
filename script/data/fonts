@@ -1,0 +1,8 @@
+#!/bin/bash
+
+MakeSpriteFont "Consolas" /a/local/data/font/consolas_144.spritefont /FontSize:16
+
+# todo
+# MakeSpriteFont /a/local/assets/font/bacteria_12/bacteria_12.ttf /a/local/data/font/bacteria_12.spritefont
+
+MakeSpriteFont "Bacteria 12" /FontSize:12 /a/local/data/font/bacteria_12.spritefont

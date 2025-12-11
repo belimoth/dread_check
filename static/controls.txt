@@ -1,0 +1,117 @@
+Quit       | Esc        | --       | --
+--―――――――――|―――――――――――――――――――――――|―――--
+FEET       |                       |
+--―――――――――|―――――――――――――――――――――――|―――--
+Move       | WASD       | L        | LS
+Run, Jog   | Shift      | L3       | LSB
+Jump       | Space      | Cross    | A
+Crouch     | Ctrl, C    | Circle   | B
+--――――――――――――――――――――――|――――――――――――――--
+HEAD                    |
+--――――――――――――――――――――――|――――――――――――――--
+Look       | Mouse      | R        | RS
+Walk, Aim  | Mouse 3, F | R3       | RSB
+--―――――――――|―――――――――――――――――――――――|―――--
+HANDS      |                       |
+--―――――――――|―――――――――――――――――――――――|―――--
+Fire       | Mouse 1    | R2       | RT
+Rack       | Mouse 2    | L2       | LT
+Offhand    | Q          | L1       | LB
+Hand       | E          | R1       | RB
+--――――――――――――――――――――――|――――――――――――――--
+HANDS (GOOFY)           |
+--――――――――――――――――――――――|――――――――――――――--
+Rack       | Mouse 1    | R2       | RT
+Fire       | Mouse 2    | L2       | LT
+Hand       | Q          | L1       | LB
+Offhand    | E          | R1       | RB
+--―――――――――|―――――――――――――――――――――――|―――--
+ITEMS      |                       |
+--―――――――――|―――――――――――――――――――――――|―――--
+Reload     | R          | Square   | X
+Use, Belt  | Tab        | Triangle | Y
+Gear       | 1234567890 | DPad     | DPad
+Gear       | Mouse 4, Mouse 5, Mouse Wheel
+--――――――――――――――――――――――|――――――――――――――--
+OTHER                   |
+--――――――――――――――――――――――|――――――――――――――--
+Menu       | Enter      | Start    | Menu
+Clay       | ~, Ctrl ~  | Select   | View
+--―――――――――――――――――――――――――――――――――――――--
+MOVES - WIP
+--―――――――――――――――――――――――――――――――――――――--
+Jump   ↕ = Dive
+Jump   ↔ = Dive
+Crouch ↕ = Stance
+Crouch ↔ = Spin
+Run + Crouch   = Dive
+Jog + Crouch ↑ = Dropkick
+Jog + Crouch ↔ = Dive + Spin
+Jog + Crouch ↓ = Slide
+Run + Dive + Run = Roll
+--―――――――――――――――――――――――――――――――――――――--
+GEAR
+--―――――――――――――――――――――――――――――――――――――--
+Gear ↑ = Head item
+Gear ↔ = Gear items
+Gear ↓ = Empty hands
+--―――――――――――――――――――――――――――――――――――――--
+GUNS
+--―――――――――――――――――――――――――――――――――――――--
+Reload ↑ = Load
+Reload ← = Change ammo type
+Reload → = Equip magazine
+Reload ↓ = Unload
+--―――――――――――――――――――――――――――――――――――――--
+BELT
+--―――――――――――――――――――――――――――――――――――――--
+Belt ↕ = Belt items
+Belt ← = Swap
+Belt → = Away
+--―――――――――――――――――――――――――――――――――――――--
+MOVES - WIP
+--―――――――――――――――――――――――――――――――――――――--
+Hand + Offhand = Prepare
+Prepare + Fire = Throw
+Prepare + Rack = Drop
+--―――――――――――――――――――――――――――――――――――――--
+USING - WIP
+--―――――――――――――――――――――――――――――――――――――--
+Use to interact with things in the world
+Use nothing to equip/unequip belt items
+--―――――――――――――――――――――――――――――――――――――--
+GRABBING - WIP
+--―――――――――――――――――――――――――――――――――――――--
+Grab a corner or ledge to mount gun
+Grab a player from behind to stack up
+Take any item from another player's hands
+Keep or push to prevent taking
+--―――――――――――――――――――――――――――――――――――――--
+TRAVERSAL - WIP
+--―――――――――――――――――――――――――――――――――――――--
+Hold crouch to glide across terrain
+Hold jump to hop, climb over terrain
+Menu while running to autorun
+--―――――――――――――――――――――――――――――――――――――--
+WEAPONS
+--―――――――――――――――――――――――――――――――――――――--
+Winchester Model 1897 Shotgun
+- Rack, reload, unrack to chamber load
+- Hold down the trigger and rack to slam
+--―――――――――――――――――――――――――――――――――――――--
+United States Model 1917 Revolver
+- Hold down the trigger and rack to fan
+--―――――――――――――――――――――――――――――――――――――--
+AUTOPAD AND HALFPAD
+--―――――――――――――――――――――――――――――――――――――--
+Switch between mouse, keyboard, and
+gamepad at will; The face buttons move
+to the dpad while using the mouse
+--―――――――――――――――――――――――――――――――――――――--
+GYRO - WIP
+--―――――――――――――――――――――――――――――――――――――--
+Use a PS5 controller for gyro aim
+--―――――――――――――――――――――――――――――――――――――--
+HAPTICS - WIP
+--―――――――――――――――――――――――――――――――――――――--
+Use a PS5 controller for trigger haptics

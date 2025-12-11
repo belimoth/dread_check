@@ -1,0 +1,10 @@
+#!/bin/bash
+
+echo todo: output of texassemble needs to be downsized
+echo aborting...
+exit
+
+cd assets
+faces="px.png nx.png py.png ny.png pz.png nz.png"
+
+texassemble cube -nologo $faces -o /a/local/data/texture/sky.dds -srgbi -y

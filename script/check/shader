@@ -1,0 +1,102 @@
+#!/bin/bash
+
+source msvc.sh
+
+#
+
+fxc -T vs_4_0 -E vs        a:/shader/clay/basic.hlsl
+fxc -T ps_4_0 -E ps        a:/shader/clay/basic.hlsl
+
+fxc -T vs_4_0 -E vs        a:/shader/clay/grid.hlsl
+fxc -T ps_4_0 -E ps        a:/shader/clay/grid.hlsl
+
+fxc -T ps_4_0 -E ps        a:/shader/debug/overdraw.hlsl
+
+fxc -T vs_4_0 -E vs        a:/shader/zed/canvas.hlsl
+fxc -T ps_4_0 -E ps        a:/shader/zed/canvas.hlsl
+
+fxc -T vs_4_0 -E vs        a:/shader/zed/ui_quad.hlsl
+fxc -T gs_4_0 -E gs        a:/shader/zed/ui_quad.hlsl
+fxc -T ps_4_0 -E ps        a:/shader/zed/ui_quad.hlsl
+
+fxc -T vs_4_0 -E vs        a:/shader/game/bullet.hlsl
+fxc -T ps_4_0 -E ps        a:/shader/game/bullet.hlsl
+
+fxc -T vs_4_0 -E vs        a:/shader/game/depth.hlsl
+fxc -T ps_4_0 -E ps        a:/shader/game/depth.hlsl
+
+fxc -T vs_4_0 -E vs        a:/shader/game/enemy.hlsl
+fxc -T ps_4_0 -E ps        a:/shader/game/enemy.hlsl
+fxc -T vs_4_0 -E vs        a:/shader/game/enemy_hitbox.hlsl
+fxc -T ps_4_0 -E ps        a:/shader/game/enemy_hitbox.hlsl
+
+fxc -T vs_4_0 -E vs        a:/shader/game/fill.hlsl
+fxc -T ps_4_0 -E ps        a:/shader/game/fill.hlsl
+
+fxc -T vs_4_0 -E vs        a:/shader/game/hud.hlsl
+fxc -T ps_4_0 -E ps        a:/shader/game/hud.hlsl
+
+fxc -T vs_4_0 -E vs        a:/shader/game/main.hlsl
+fxc -T ps_4_0 -E ps        a:/shader/game/main.hlsl
+
+fxc -T vs_4_0 -E vs        a:/shader/game/sky.hlsl
+fxc -T ps_4_0 -E ps        a:/shader/game/sky.hlsl
+fxc -T ps_4_0 -E ps_depth  a:/shader/game/sky.hlsl
+fxc -T ps_4_0 -E ps_normal a:/shader/game/sky.hlsl
+
+fxc -T ps_4_0 -E ps        a:/shader/game/title.hlsl
+fxc -T vs_4_0 -E vs        a:/shader/game/title.hlsl
+
+fxc -T vs_4_0 -E vs        a:/shader/game/vignette.hlsl
+fxc -T ps_4_0 -E ps        a:/shader/game/vignette.hlsl
+
+#
+
+fxc -T vs_4_0 -E vs        a:/shader/maze/chest.hlsl
+fxc -T ps_4_0 -E ps        a:/shader/maze/chest.hlsl
+
+fxc -T vs_4_0 -E vs        a:/shader/maze/main.hlsl
+fxc -T ps_4_0 -E ps        a:/shader/maze/main.hlsl
+
+fxc -T vs_4_0 -E vs        a:/shader/maze/maze.hlsl
+fxc -T ps_4_0 -E ps        a:/shader/maze/maze.hlsl
+
+fxc -T vs_4_0 -E vs        a:/shader/maze/nazi.hlsl
+fxc -T ps_4_0 -E ps        a:/shader/maze/nazi.hlsl
+
+fxc -T vs_4_0 -E vs        a:/shader/maze/sky.hlsl
+fxc -T ps_4_0 -E ps        a:/shader/maze/sky.hlsl
+
+fxc -T gs_4_0 -E gs        a:/shader/maze/snow.hlsl
+fxc -T vs_4_0 -E vs        a:/shader/maze/snow.hlsl
+fxc -T ps_4_0 -E ps        a:/shader/maze/snow.hlsl
+
+#
+
+fxc -T vs_4_0 -E vs        a:/shader/wolf/wall.hlsl
+fxc -T ps_4_0 -E ps        a:/shader/wolf/wall.hlsl
+fxc -T ps_4_0 -E ps_depth  a:/shader/wolf/wall.hlsl
+fxc -T ps_4_0 -E ps_normal a:/shader/wolf/wall.hlsl
+
+fxc -T vs_4_0 -E vs        a:/shader/wolf/door_0.hlsl
+fxc -T ps_4_0 -E ps        a:/shader/wolf/door_0.hlsl
+fxc -T vs_4_0 -E vs        a:/shader/wolf/door_1.hlsl
+fxc -T ps_4_0 -E ps        a:/shader/wolf/door_1.hlsl
+fxc -T vs_4_0 -E vs        a:/shader/wolf/door_2.hlsl
+fxc -T ps_4_0 -E ps        a:/shader/wolf/door_2.hlsl
+
+fxc -T vs_4_0 -E vs        a:/shader/wolf/sprite.hlsl
+fxc -T ps_4_0 -E ps        a:/shader/wolf/sprite.hlsl
+fxc -T ps_4_0 -E ps_depth  a:/shader/wolf/sprite.hlsl
+fxc -T ps_4_0 -E ps_normal a:/shader/wolf/sprite.hlsl
+
+fxc -T vs_4_0 -E vs        a:/shader/wolf/floor.hlsl
+fxc -T ps_4_0 -E ps        a:/shader/wolf/floor.hlsl
+fxc -T ps_4_0 -E ps_depth  a:/shader/wolf/floor.hlsl
+fxc -T ps_4_0 -E ps_normal a:/shader/wolf/floor.hlsl
+
+fxc -T vs_4_0 -E vs        a:/shader/wolf/enemy.hlsl
+fxc -T ps_4_0 -E ps        a:/shader/wolf/enemy.hlsl
+
+fxc -T vs_4_0 -E vs        a:/shader/wolf/stencil.hlsl
+fxc -T ps_4_0 -E ps        a:/shader/wolf/stencil.hlsl

@@ -1,0 +1,8 @@
+a:/source/main.cpp
+-nologo
+-GR-
+-O1
+-D zed_mode_profile
+-I a:/include
+-I a:/local/vend/include
+-link -libpath:a:/local/vend/lib -incremental:no -subsystem:windows -out:draugb.exe

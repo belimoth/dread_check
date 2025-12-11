@@ -1,0 +1,18 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "(Windows) Launch",
+			"type": "cppvsdbg",
+			"request": "launch",
+			"program": "a:/local/build/debug/draugb.exe",
+			"args": [ "--debug" ],
+			"stopAtEntry": false,
+			"cwd": "a:/local/run",
+			"environment": [],
+			"logging": {
+				"moduleLoad": false
+			}
+		}
+	]
+}
