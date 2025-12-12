@@ -3,7 +3,6 @@
 #include "../player.h"
 #include "constants.h"
 
-
 #include <zed/app/audio.h>
 #include <zed/random.h>
 
@@ -31,7 +30,6 @@ motion_result motion_spring( float x, float v, float xt, float zeta, float omega
 motion_result motion_sprint_2( float x, float v, float xt, float f, float pd, float td = 1, float h = 1 ) {
 	float omega = 2 * math_pi * f;
 	float zeta  = ln( pd ) / ( -omega * td ); // todo maybe divide by 60 for "frames"
-
 	return motion_spring( x, v, xt, zeta, omega, h );
 }
 
@@ -76,7 +74,7 @@ void game_player_gun_rig_step( game_player &player ) {
 }
 
 void game_player_rig_step( game_player &player ) {
-	zed_camera *camera = &game.data.camera[ player.i ];
+	zed_camera &camera = game.data.camera[ player.i ];
 
 	//
 
@@ -208,12 +206,12 @@ void game_player_rig_step( game_player &player ) {
 
 	//
 
-	camera->position = player.object.position;
-	camera->position.y += game_player_get_height( player ) + player.rig.bob_y;
+	camera.position = player.object.position;
+	camera.position.y += game_player_get_height( player ) + player.rig.bob_y;
 
-	camera->rotation.x += -player.pad.joy_1.y * 1.0; // was 0.8;
-	camera->rotation.x = min( camera->rotation.x,  90.0 );
-	camera->rotation.x = max( camera->rotation.x, -90.0 );
+	camera.rotation.x += -player.pad.joy_1.y * 1.0; // was 0.8;
+	camera.rotation.x = min( camera.rotation.x,  90.0 );
+	camera.rotation.x = max( camera.rotation.x, -90.0 );
 
-	camera->rotation.y += player.turn_speed;
+	camera.rotation.y += player.turn_speed;
 }

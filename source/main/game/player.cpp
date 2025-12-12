@@ -20,9 +20,8 @@ void game_player_init() {
 }
 
 void game_player_movement_step( game_player &player ) {
+	zed_camera &camera = game.data.camera[ player.i ];
 	float3 velocity = player.object.velocity;
-
-	zed_camera *camera = &game.data.camera[ player.i ];
 
 // 	if ( false ) {
 // 		float length_velocity = length( velocity );
@@ -39,7 +38,7 @@ void game_player_movement_step( game_player &player ) {
 	float dx = velocity.x;
 	float dy = velocity.y;
 
-	float3 move = zed_camera_walk( *camera, dx, dy, 0 );
+	float3 move = zed_camera_walk( camera, dx, dy, 0 );
 
 	player.object.position.x += move.x;
 	player.object.position.y += move.y;
