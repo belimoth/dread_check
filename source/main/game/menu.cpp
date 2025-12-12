@@ -16,7 +16,6 @@
 void scene_game_start_for_real();
 
 #include "menu/action.h"
-#include "menu/color.h"
 #include "menu/sfx.h"
 
 #include "menu/event.h"

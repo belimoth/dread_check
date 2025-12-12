@@ -1,5 +1,6 @@
 #pragma once
 
+#include "../../../data/color.h"
 #include "../draw/split.h"
 #include <zed/app/graphics.h>
 
@@ -31,7 +32,7 @@ enum hud_text_align {
 	align_right,
 };
 
-void hud_text( string text, float x, float y, hud_text_align align = align_left, uint color = 0xffffff ) {
+void hud_text( string text, float x, float y, hud_text_align align = align_left, uint color = color_hud_fg ) {
 	if ( align == align_center ) x = x - (float)floor( app_graphics_text_measure( text ) / 2 );
 	if ( align == align_right  ) x = x - (float)floor( app_graphics_text_measure( text ) );
 	app_graphics_draw_text_new( text, x, y, color );

@@ -4,8 +4,8 @@
 #include "../../../game/player.h"
 
 void game_draw_hud_x( game_player &player, game_hud &hud ) {
-	uint color = 0xffffff;
-	if ( player.pad.w or player.pad.e or player.pad.n or player.pad.s or player.x_menu_handled ) color = 0xffffff; else color = 0xffcc44;
+	uint color = color_hud_fg;
+	if ( player.pad.w or player.pad.e or player.pad.n or player.pad.s or player.x_menu_handled ) color = color_hud_fg; else color = color_hud_fg_active;
 	game_item &item = game_player_hands_get_item( player );
 
 	hud.text_w = "--";
@@ -39,6 +39,6 @@ void game_draw_hud_x( game_player &player, game_hud &hud ) {
 	if ( player.torso == torso_none ) hud.text_w = hud.text_e = hud.text_n = hud.text_s = "--";
 
 	hud_text( hud.text,   hud.x, hud.y,      align_center, color );
-	hud_text( hud.text_n, hud.x, hud.y - 20, align_center, player.pad.n ? 0xffbb22 : 0xffffff );
-	hud_text( hud.text_s, hud.x, hud.y + 20, align_center, player.pad.s ? 0xffbb22 : 0xffffff );
+	hud_text( hud.text_n, hud.x, hud.y - 20, align_center, player.pad.n ? color_hud_fg_active : color_hud_fg );
+	hud_text( hud.text_s, hud.x, hud.y + 20, align_center, player.pad.s ? color_hud_fg_active : color_hud_fg );
 }

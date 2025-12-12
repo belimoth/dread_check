@@ -1,3 +1,4 @@
+#include "../../../data/color.h"
 #include "../../../data/gfx.h"
 #include "../../canvas.h"
 #include "../../game.h"
@@ -6,7 +7,6 @@
 #include <zed/app/graphics.h>
 
 #include "../menu.h"
-#include "../menu/color.h"
 
 #include <zed.h>
 #include <zed/app/ui.h>

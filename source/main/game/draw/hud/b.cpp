@@ -1,5 +1,6 @@
 #include "../hud.h"
 
+#include "../../../data/color.h"
 #include "../../../game.h"
 #include "../../../game/player.h"
 
@@ -94,7 +95,7 @@ void game_draw_hud_b( game_player &player, game_hud &hud ) {
 			}
 
 			for ( int i = 0; i < 6; i++ ) {
-				hud_text( texts[i], hud.x, hud.y - 120 + i * 20 - k * 20 + 6 * 20, align_center, k == i ? 0xffcc44 : 0xffffff );
+				hud_text( texts[i], hud.x, hud.y - 120 + i * 20 - k * 20 + 6 * 20, align_center, k == i ? color_hud_fg_active : color_hud_fg );
 			}
 
 			hud.text   = {};
