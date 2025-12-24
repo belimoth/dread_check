@@ -179,10 +179,10 @@ void game_menu_main( game_menu &menu, game_menu_signal signal ) {
 		}
 
 		case game_menu_page_play: {
-			game_menu_item( menu, "1 Player", x, y +   0, game_menu_cb { local_player_count =  1; game_menu_push( menu, game_menu_page_play_mode ); });
-			game_menu_item( menu, "2 Player", x, y +  20, game_menu_cb { local_player_count =  2; game_menu_push( menu, game_menu_page_play_mode ); });
-			game_menu_item( menu, "3 Player", x, y +  40, game_menu_cb { local_player_count =  3; game_menu_push( menu, game_menu_page_play_mode ); });
-			game_menu_item( menu, "4 Player", x, y +  60, game_menu_cb { local_player_count =  4; game_menu_push( menu, game_menu_page_play_mode ); });
+			game_menu_item( menu, "1 Player", x, y +  0, game_menu_cb { local_player_count = 1; game_menu_push( menu, game_menu_page_play_mode ); });
+			game_menu_item( menu, "2 Player", x, y + 20, game_menu_cb { local_player_count = 2; game_menu_push( menu, game_menu_page_play_mode ); });
+			game_menu_item( menu, "3 Player", x, y + 40, game_menu_cb { local_player_count = 3; game_menu_push( menu, game_menu_page_play_mode ); });
+			game_menu_item( menu, "4 Player", x, y + 60, game_menu_cb { local_player_count = 4; game_menu_push( menu, game_menu_page_play_mode ); });
 
 			game_menu_item_back  ( menu, x,  0 );
 			game_menu_item_status( menu, x, 20 );
@@ -193,9 +193,8 @@ void game_menu_main( game_menu &menu, game_menu_signal signal ) {
 		case game_menu_page_play_mode: {
 			game_menu_item( menu, "Action",    x, y +  0, game_menu_cb { game_menu_push( menu, game_menu_page_play_action    ); });
 			game_menu_item( menu, "Adventure", x, y + 20, game_menu_cb { game_menu_push( menu, game_menu_page_play_adventure ); });
-
-			game_menu_item( menu, "Peaceful",  x, y + 60 );
-			game_menu_item( menu, "Creative",  x, y + 80 );
+			game_menu_item( menu, "Peaceful",  x, y + 40 );
+			game_menu_item( menu, "Spectacle", x, y + 60 );
 
 			game_menu_item_back  ( menu, x,  0 );
 			game_menu_item_status( menu, x, 20 );
@@ -238,12 +237,12 @@ void game_menu_main( game_menu &menu, game_menu_signal signal ) {
 		}
 
 		case game_menu_page_play_adventure_load: {
-			game_menu_item( menu, "Empty",   x, y +   0 );
-			game_menu_item( menu, "Empty",   x, y +  20 );
-			game_menu_item( menu, "Empty",   x, y +  40 );
-			game_menu_item( menu, "Empty",   x, y +  60 );
-			game_menu_item( menu, "Empty",   x, y +  80 );
-			game_menu_item( menu, "Empty",   x, y + 100 );
+			game_menu_item( menu, "Empty", x, y +   0 );
+			game_menu_item( menu, "Empty", x, y +  20 );
+			game_menu_item( menu, "Empty", x, y +  40 );
+			game_menu_item( menu, "Empty", x, y +  60 );
+			game_menu_item( menu, "Empty", x, y +  80 );
+			game_menu_item( menu, "Empty", x, y + 100 );
 
 			game_menu_item_back  ( menu, x,  0 );
 			game_menu_item_status( menu, x, 20 );
@@ -269,10 +268,10 @@ void game_menu_main( game_menu &menu, game_menu_signal signal ) {
 
 			game_menu_item( menu, text_chapter,  x, y +   0, game_menu_cb { game_menu_push( menu, game_menu_page_play_adventure_campaign );        });
 			game_menu_item( menu, text_privacy,  x, y +  20, game_menu_cb { menu_privacy_i = ( menu_privacy_i + 1 ) % array_count( name_privacy ); });
-			// game_menu_item( menu, text_chat,     x, y +  40, game_menu_cb { menu_chat_i    = ( menu_chat_i    + 1 ) % array_count( name_chat    ); });
-			// game_menu_item( menu, text_rules,    x, y +  60, game_menu_cb {}                                                                         );
-			// game_menu_item( menu, text_cheats,   x, y +  80, game_menu_cb {}                                                                         );
-			game_menu_item( menu, "Launch Game", x, y + 100, game_menu_cb {                                                                        });
+		 // game_menu_item( menu, text_chat,     x, y +  40, game_menu_cb { menu_chat_i    = ( menu_chat_i    + 1 ) % array_count( name_chat    ); });
+		 // game_menu_item( menu, text_rules,    x, y +  60 );
+		 // game_menu_item( menu, text_cheats,   x, y +  80 );
+			game_menu_item( menu, "Launch Game", x, y + 100 );
 
 			game_menu_item_back  ( menu, x,  0 );
 			game_menu_item_status( menu, x, 20 );
