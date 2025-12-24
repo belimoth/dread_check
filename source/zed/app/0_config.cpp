@@ -4,7 +4,7 @@
 #pragma warning( disable: 4365 )
 #pragma warning( disable: 4530 )
 #pragma warning( disable: 4800 )
-#include <argh/argh.h>
+#include <argh.h>
 #pragma warning( pop )
 
 void app_options_init() {

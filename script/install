@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # production static
+
 vcpkg install --triplet x64-windows-static argh
 vcpkg install --triplet x64-windows-static curl
 vcpkg install --triplet x64-windows-static directxtk
@@ -8,17 +9,22 @@ vcpkg install --triplet x64-windows-static directxtex
 vcpkg install --triplet x64-windows-static enet
 vcpkg install --triplet x64-windows-static inih
 vcpkg install --triplet x64-windows-static libgit2
+vcpkg install --triplet x64-windows-static miniaudio
+vcpkg install --triplet x64-windows-static pcg
 vcpkg install --triplet x64-windows-static physfs
 vcpkg install --triplet x64-windows-static stb
 vcpkg install --triplet x64-windows-static xxhash
 
 # production dynamic
+
 vcpkg install --triplet x64-windows discord-game-sdk
 
 # development
+
 vcpkg install --triplet x64-windows-static presentmon
 
 # ide
+
 vcpkg install --triplet x64-windows-static cpprestsdk
 vcpkg install --triplet x64-windows-static wil
 vcpkg install --triplet x64-windows-static webview2

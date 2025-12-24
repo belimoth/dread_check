@@ -1,6 +1,6 @@
 #include <zed.h>
 
-#include <xxhash/xxhash.h>
+#include <xxhash.h>
 #pragma comment( lib, "xxhash.lib" )
 #include <xxhashct/xxh64.hpp>
 

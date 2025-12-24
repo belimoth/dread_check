@@ -8,24 +8,25 @@ echo vending...
 
 #
 
-# rm --recursive --force /a/local/vend/include
+rm --recursive --force /a/local/vend
+cp --recursive /a/vend /a/local
 
-  cp                       /a/local/vcpkg/installed/x64-windows-static/include/argh.h       /a/local/vend/include/argh/argh.h
-  cp --recursive --parents /a/local/vcpkg/installed/x64-windows-static/include/curl         /a/local/vend/include/curl
-  cp                       /a/local/vcpkg/installed/x64-windows-static/lib/brotlicommon.lib /a/local/vend/lib
-  cp                       /a/local/vcpkg/installed/x64-windows-static/lib/brotlidec.lib    /a/local/vend/lib
-  cp                       /a/local/vcpkg/installed/x64-windows-static/lib/brotlienc.lib    /a/local/vend/lib
-  cp                       /a/local/vcpkg/installed/x64-windows-static/lib/cpprest_2_10.lib /a/local/vend/lib
-  cp                       /a/local/vcpkg/installed/x64-windows-static/lib/inireader.lib    /a/local/vend/lib
-  cp                       /a/local/vcpkg/installed/x64-windows-static/lib/libcurl.lib      /a/local/vend/lib
-  cp                       /a/local/vcpkg/installed/x64-windows-static/lib/presentdata.lib  /a/local/vend/lib
-  cp                       /a/local/vcpkg/installed/x64-windows-static/lib/zlib.lib         /a/local/vend/lib
-  cp --recursive --parents /a/local/vcpkg/installed/x64-windows-static/include/directxtk    /a/local/vend/include/directxtk
-# cp --recursive --parents /a/local/vcpkg/installed/x64-windows-static/include/directxtex   /a/local/vend/include/directxtex
-# cp --recursive --parents /a/local/vcpkg/installed/x64-windows-static/include/discord      /a/local/vend/include/discord
-# cp --recursive --parents /a/local/vcpkg/installed/x64-windows-static/include/ds5w         /a/local/vend/include/ds5w
-# cp --recursive --parents /a/local/vcpkg/installed/x64-windows-static/include/dxh          /a/local/vend/include/dxh
-  cp --recursive --parents /a/local/vcpkg/installed/x64-windows-static/include/enet         /a/local/vend/include/enet
-  cp --recursive --parents /a/local/vcpkg/installed/x64-windows-static/include/inih         /a/local/vend/include/inih
+cp             /a/local/vcpkg/installed/x64-windows-static/include/argh.h       /a/local/vend/include/argh.h
+cp --recursive /a/local/vcpkg/installed/x64-windows-static/include/curl         /a/local/vend/include/curl
+cp --recursive /a/local/vcpkg/installed/x64-windows-static/include/enet         /a/local/vend/include/enet
+cp             /a/local/vcpkg/installed/x64-windows-static/include/ini.h        /a/local/vend/include/ini.h
+cp             /a/local/vcpkg/installed/x64-windows-static/include/xxhash.h     /a/local/vend/include/xxhash.h
 
-# todo
+cp             /a/local/vcpkg/installed/x64-windows-static/lib/brotlicommon.lib /a/local/vend/lib/brotlicommon.lib
+cp             /a/local/vcpkg/installed/x64-windows-static/lib/brotlidec.lib    /a/local/vend/lib/brotlidec.lib
+cp             /a/local/vcpkg/installed/x64-windows-static/lib/brotlienc.lib    /a/local/vend/lib/brotlienc.lib
+cp             /a/local/vcpkg/installed/x64-windows-static/lib/cpprest_2_10.lib /a/local/vend/lib/cpprest_2_10.lib
+cp             /a/local/vcpkg/installed/x64-windows-static/lib/inih.lib         /a/local/vend/lib/inih.lib
+cp             /a/local/vcpkg/installed/x64-windows-static/lib/inireader.lib    /a/local/vend/lib/inireader.lib
+cp             /a/local/vcpkg/installed/x64-windows-static/lib/libcurl.lib      /a/local/vend/lib/libcurl.lib
+cp             /a/local/vcpkg/installed/x64-windows-static/lib/presentdata.lib  /a/local/vend/lib/presentdata.lib
+cp             /a/local/vcpkg/installed/x64-windows-static/lib/xxhash.lib       /a/local/vend/lib/xxhash.lib
+cp             /a/local/vcpkg/installed/x64-windows-static/lib/zlib.lib         /a/local/vend/lib/zlib.lib
+
+cp --recursive /a/local/vcpkg/installed/x64-windows/include/discord-game-sdk    /a/local/vend/include/discord
+cp             /a/local/vcpkg/installed/x64-windows/lib/discord_game_sdk.lib    /a/local/vend/lib/discord_game_sdk.dll.lib
