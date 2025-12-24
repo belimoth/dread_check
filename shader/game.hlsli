@@ -216,6 +216,8 @@ static const float fog_b = 0.001;
 
 static const float fog_c = fog_a / fog_b;
 
+// todo
+
 static const float3 color_sun = float3( 1.0, 0.4, 0.3 ) * 1;
 // static const float3 color_sun = float3( 1.0, 0.4, 0.3 ) * 2;
 // static const float3 color_fog = float3( 0.4, 0.1, 0.5 );

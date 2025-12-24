@@ -1,4 +1,5 @@
 #include "../clay.h"
+#include "../data/color.h"
 
 #include <zed/app/graphics.h>
 #include <zed/color.h>
@@ -19,7 +20,7 @@ int studio_ini_handler( handle user, string section, string name, string value )
 
 void studio_init() {
 	zed_buffer_new_uniform( clay.edit_model.buffer_studio, sizeof(clay.edit_model.studio) );
-	clay.edit_model.studio.ambient_0 = float3( htov( 0xFFFFE5 ) );
+	clay.edit_model.studio.ambient_0 = float3( htov( color_ambient_0 ) );
 	ini_parse( "data/studio.ini", studio_ini_handler, &clay.edit_model.studio );
 	zed_buffer_update( clay.edit_model.buffer_studio, &clay.edit_model.studio, sizeof(clay.edit_model.studio), 0 );
 	zed_buffer_use_uniform( clay.edit_model.buffer_studio, 3 );

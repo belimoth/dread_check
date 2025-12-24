@@ -1,14 +1,9 @@
 #pragma once
 
+#include "../data/color.h"
+
 #include <zed/app/graphics.h>
 #include <zed/app/ui.h>
-
-uint color_bg        = 0x181818;
-uint color_bg_hover  = 0x1F1F1F;
-uint color_bg_active = 0x353535;
-uint color_fg        = 0xC5C5C5;
-uint color_border    = 0x2B2B2B;
-uint color_active    = 0x0078D7;
 
 void clay_ui_draw_fill( uint color = color_bg ) {
 	ui_element_step_node *self = ui.data.step_nodes + ui.id_current;

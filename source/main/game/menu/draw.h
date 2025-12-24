@@ -1,5 +1,6 @@
 #pragma once
 
+#include "../../../data/color.h"
 #include "../../../data/gfx.h"
 #include "../../canvas.h"
 #include "../../game.h"
@@ -39,7 +40,7 @@ void draw_title() {
 
 void draw_title_maze() {
 	void zed_canvas_fill( zed_canvas &canvas, int r, int g, int b );
-	zed_canvas_fill( canvas_x1, 0, 0, 170 );
+	zed_canvas_fill( canvas_x1, color_maze_menu_bg );
 	zed_pass_reset( pass_title );
 	zed_pass_use( gfx_start_1984 );
 
