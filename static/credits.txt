@@ -2,7 +2,10 @@ DRAUGB
 
 Zachary Alexander
 belimoth.com
-Code, Design
+Code, Design, Direction
+
+Ray "Blambo" Chen
+Code
 
 ----------8<----------
 
@@ -14,7 +17,6 @@ Derek Sneed
 James Murff
 Joseph Silverman
 Peter Queckenstedt
-Ray "Blambo" Chen
 
 ----------8<----------
 
