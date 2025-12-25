@@ -33,6 +33,16 @@ void game_draw_player_body( game_player &player, int i ) {
 		if ( i == player.i ) handle.y -= 0.3;
 		break;
 
+		// todo
+		case stance_side_left:
+		case stance_dive_left:
+		break;
+
+		// todo
+		case stance_side_right:
+		case stance_dive_right:
+		break;
+
 		default:
 		handle = { 0, camera.position.y - player.object.position.y - 1.5f, 0 };
 		if ( i == player.i ) handle.z -= 0.3;
