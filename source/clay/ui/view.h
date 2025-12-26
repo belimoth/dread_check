@@ -43,7 +43,7 @@ void el_table_view_on_ui_event( ui_event event ) {
 
 void el_table_view() {
 	el_start;
-	ui_element_bind( clay.ui.data_view, el_table_view_on_ui_event );
+	el_bind( clay.ui.data_view, el_table_view_on_ui_event );
 	ui_element_set_table( 48 );
 
 	for ( int i = 0; i < array_count( view_names ); i++ ) el_table_view_row();
@@ -54,21 +54,34 @@ void el_table_view() {
 void el_column_view() {
 	el_start;
 	clay_ui_draw_fill();
-	ui_element_set_block();
+	el_block;
 	ui_element_set_padding(2);
 
 	el_header( "VIEW" );
 	el_table_view();
 
-	if ( clay.page_view == clay_page_view_game  ) noop;
-	if ( clay.page_view == clay_page_view_disk  ) noop;
-	if ( clay.page_view == clay_page_view_size  ) noop;
-	if ( clay.page_view == clay_page_view_perf  ) noop;
-	if ( clay.page_view == clay_page_view_video ) noop;
-	if ( clay.page_view == clay_page_view_audio ) noop;
-	if ( clay.page_view == clay_page_view_input ) noop;
+	switch ( clay.page_view ) {
+		case clay_page_view_game:
+		break;
 
-	//
+		case clay_page_view_disk:
+		break;
+
+		case clay_page_view_size:
+		break;
+
+		case clay_page_view_perf:
+		break;
+
+		case clay_page_view_video:
+		break;
+
+		case clay_page_view_audio:
+		break;
+
+		case clay_page_view_input:
+		break;
+	}
 
 	el_finish;
 }

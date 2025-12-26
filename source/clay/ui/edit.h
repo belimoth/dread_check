@@ -43,7 +43,7 @@ void el_table_edit_on_ui_event( ui_event event ) {
 
 void el_table_edit() {
 	el_start;
-	ui_element_bind( clay.ui.data_edit, el_table_edit_on_ui_event );
+	el_bind( clay.ui.data_edit, el_table_edit_on_ui_event );
 	ui_element_set_table();
 
 	for ( int i = 0; i < clay.edit.path_i; i++ ) el_table_edit_row();
@@ -54,7 +54,7 @@ void el_table_edit() {
 void el_column_edit() {
 	el_start;
 	clay_ui_draw_fill();
-	ui_element_set_block();
+	el_block;
 	ui_element_set_padding(2);
 
 	el_header( "EDIT" );

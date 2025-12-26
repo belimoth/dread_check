@@ -43,7 +43,7 @@ void el_table_find_on_ui_event( ui_event event ) {
 
 void el_table_find() {
 	el_start;
-	ui_element_bind( clay.ui.data_find, el_table_find_on_ui_event );
+	el_bind( clay.ui.data_find, el_table_find_on_ui_event );
 	ui_element_set_table();
 
 	for ( int i = 0; i < find_path_i; i++ ) el_table_find_row();
@@ -54,7 +54,7 @@ void el_table_find() {
 void el_column_find() {
 	el_start;
 	clay_ui_draw_fill();
-	ui_element_set_block();
+	el_block;
 	ui_element_set_padding(2);
 
 	el_header( "FIND" );

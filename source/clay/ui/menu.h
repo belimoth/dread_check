@@ -57,7 +57,7 @@ void el_menu_on_ui_event( ui_event event ) {
 
 void el_column_menu() {
 	el_start;
-	ui_element_bind( clay.ui.data_menu, el_menu_on_ui_event );
+	el_bind( clay.ui.data_menu, el_menu_on_ui_event );
 	clay_ui_draw_fill();
 	ui_element_set_table( 96 );
 

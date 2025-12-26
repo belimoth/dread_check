@@ -48,7 +48,7 @@ void el_column_main() {
 	ui_element_step_node *self = ui.data.step_nodes + id;
 	self->handle_ui_event = edit_model_on_ui_event;
 	// clay_ui_draw_fill();
-	ui_element_set_block();
+	el_block;
 
 	// el_header( "MAIN" );
 	// el_table_assets();

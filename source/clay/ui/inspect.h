@@ -47,7 +47,7 @@ void el_table_layers_row() {
 
 void el_table_layers() {
 	el_start;
-	ui_element_bind( clay.ui.data_layers, el_table_layers_on_ui_event );
+	el_bind( clay.ui.data_layers, el_table_layers_on_ui_event );
 	ui_element_set_table( 48 );
 
 	el_table_layers_row();
@@ -110,7 +110,7 @@ void el_table_inspect_row() {
 
 void el_table_inspect() {
 	el_start;
-	ui_element_bind( clay.ui.data_inspect, el_table_inspect_on_ui_event );
+	el_bind( clay.ui.data_inspect, el_table_inspect_on_ui_event );
 	ui_element_set_table( 48 );
 
 	el_table_inspect_row();
@@ -135,7 +135,7 @@ void el_palette_on_ui_event( ui_event event ) {
 
 void el_palette() {
 	el_start;
-	ui_element_bind( clay.ui.data_palette, el_palette_on_ui_event );
+	el_bind( clay.ui.data_palette, el_palette_on_ui_event );
 	el_finish;
 }
 
@@ -157,7 +157,7 @@ void el_debug() {
 void el_column_inspect() {
 	el_start;
 	clay_ui_draw_fill();
-	ui_element_set_block();
+	el_block;
 	ui_element_set_padding(2);
 
 	el_header( "LAYERS" );

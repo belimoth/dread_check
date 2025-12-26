@@ -34,7 +34,7 @@ void el_table_tool_on_ui_event( ui_event event ) {
 
 void el_table_tool() {
 	el_start;
-	ui_element_bind( clay.ui.data_tool, el_table_tool_on_ui_event );
+	el_bind( clay.ui.data_tool, el_table_tool_on_ui_event );
 	ui_element_set_table();
 
 	for ( int i = 0; i < clay.tool.tool_i; i++ ) el_table_tool_row();
@@ -45,7 +45,7 @@ void el_table_tool() {
 void el_column_tool() {
 	el_start;
 	clay_ui_draw_fill();
-	ui_element_set_block();
+	el_block;
 
 	el_header( "TOOL" );
 

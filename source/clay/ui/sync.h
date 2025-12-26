@@ -7,7 +7,7 @@
 void el_column_sync() {
 	el_start;
 	clay_ui_draw_fill();
-	ui_element_set_block();
+	el_block;
 	ui_element_set_padding(2);
 
 	el_header( "SYNC" );

@@ -19,7 +19,7 @@
 #include "ui/inspect.h"
 
 void el_root() {
-	int id = ui_element_start();
+	el_start;
 	int size = 560; // 792;
 	int flex[] = { 96, 2, size, 2, 192, 2, 0, 2, size };
 	ui_element_set_flex( array_and_count( flex ) );
