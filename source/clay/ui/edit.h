@@ -27,7 +27,7 @@ void el_table_edit_row() {
 	clay_ui_text( el_table_edit_get_data( 0, y ), color_fg );
 	self->child_position = position;
 
-	ui_element_finish( id );
+	el_finish;
 }
 
 void el_table_edit_on_ui_event( ui_event event ) {
@@ -48,7 +48,7 @@ void el_table_edit() {
 
 	for ( int i = 0; i < clay.edit.path_i; i++ ) el_table_edit_row();
 
-	ui_element_finish( id );
+	el_finish;
 }
 
 void el_column_edit() {
@@ -61,5 +61,5 @@ void el_column_edit() {
 	el_address();
 	el_table_edit();
 
-	ui_element_finish( id );
+	el_finish;
 }

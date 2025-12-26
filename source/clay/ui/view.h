@@ -34,7 +34,7 @@ void el_table_view_row() {
 
 	//
 
-	ui_element_finish( id );
+	el_finish;
 }
 
 void el_table_view_on_ui_event( ui_event event ) {
@@ -48,7 +48,7 @@ void el_table_view() {
 
 	for ( int i = 0; i < array_count( view_names ); i++ ) el_table_view_row();
 
-	ui_element_finish( id );
+	el_finish;
 }
 
 void el_column_view() {
@@ -70,5 +70,5 @@ void el_column_view() {
 
 	//
 
-	ui_element_finish( id );
+	el_finish;
 }

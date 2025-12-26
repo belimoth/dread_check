@@ -12,5 +12,5 @@ void el_column_itch() {
 
 	el_header( "ITCH" );
 
-	ui_element_finish( id );
+	el_finish;
 }

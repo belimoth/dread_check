@@ -5,6 +5,12 @@
 #include <zed/app/graphics.h>
 #include <zed/app/ui.h>
 
+#define el_start     int id = ui_element_start();
+#define el_finish    ui_element_finish( id );
+#define el_block     ui_element_set_block();
+#define el_size( x ) ui_element_set_height( x );
+#define el_pad(  x ) ui_element_set_padding( x, 0 );
+
 void clay_ui_draw_fill( uint color = color_bg ) {
 	ui_element_step_node *self = ui.data.step_nodes + ui.id_current;
 	ui.data.draw_nodes[ ui.id_draw++ ] = { self->position, self->size, { 0, 0 }, color };
@@ -74,19 +80,19 @@ void el_br() {
 	ui_element_set_block();
 	ui_element_set_height(2);
 	clay_ui_draw_border();
-	ui_element_finish( id );
+	el_finish;
 }
 
 void el_border() {
 	int id = ui_element_start();
 	clay_ui_draw_border();
-	ui_element_finish( id );
+	el_finish;
 }
 
 void el_input_interior() {
 	int id = ui_element_start();
 	clay_ui_draw_fill();
-	ui_element_finish( id );
+	el_finish;
 }
 
 void el_input() {
@@ -97,16 +103,11 @@ void el_input() {
 
 	el_input_interior();
 
-	ui_element_finish( id );
+	el_finish;
 }
 
 void el_address() {
-	int id = ui_element_start();
-	ui_element_set_block();
-	ui_element_set_height( 96 );
-	ui_element_set_padding( 16, 0 );
-
+	el_start; el_block; el_size( 96 ); el_pad( 16, 0 );
 	el_input();
-
-	ui_element_finish( id );
+	el_finish;
 }

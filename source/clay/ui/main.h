@@ -25,7 +25,7 @@ void el_table_assets_row() {
 	clay_ui_text( el_table_assets_get_data( 0, y ), color_fg );
 // 	self->child_position = position;
 
-	ui_element_finish( id );
+	el_finish;
 }
 
 void el_table_assets() {
@@ -40,7 +40,7 @@ void el_table_assets() {
 		el_table_assets_row();
 	}
 
-	ui_element_finish( id );
+	el_finish;
 }
 
 void el_column_main() {
@@ -53,5 +53,5 @@ void el_column_main() {
 	// el_header( "MAIN" );
 	// el_table_assets();
 
-	ui_element_finish( id );
+	el_finish;
 }

@@ -25,7 +25,7 @@ void el_table_tool_row() {
 	clay_ui_text( el_table_tool_get_data( 0, y ), color_fg );
 	self->child_position = position;
 
-	ui_element_finish( id );
+	el_finish;
 }
 
 void el_table_tool_on_ui_event( ui_event event ) {
@@ -39,7 +39,7 @@ void el_table_tool() {
 
 	for ( int i = 0; i < clay.tool.tool_i; i++ ) el_table_tool_row();
 
-	ui_element_finish( id );
+	el_finish;
 }
 
 void el_column_tool() {
@@ -49,5 +49,5 @@ void el_column_tool() {
 
 	el_header( "TOOL" );
 
-	ui_element_finish( id );
+	el_finish;
 }

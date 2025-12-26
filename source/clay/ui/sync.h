@@ -12,5 +12,5 @@ void el_column_sync() {
 
 	el_header( "SYNC" );
 
-	ui_element_finish( id );
+	el_finish;
 }

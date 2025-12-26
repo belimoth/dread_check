@@ -89,7 +89,7 @@ void el_root() {
 		break;
 	}
 
-	ui_element_finish( id );
+	el_finish;
 }
 
 void clay_ui_init() {

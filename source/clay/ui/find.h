@@ -34,7 +34,7 @@ void el_table_find_row() {
 	clay_ui_text( el_table_find_get_data( 0, y ), color_fg );
 	self->child_position = position;
 
-	ui_element_finish( id );
+	el_finish;
 }
 
 void el_table_find_on_ui_event( ui_event event ) {
@@ -48,7 +48,7 @@ void el_table_find() {
 
 	for ( int i = 0; i < find_path_i; i++ ) el_table_find_row();
 
-	ui_element_finish( id );
+	el_finish;
 }
 
 void el_column_find() {
@@ -61,5 +61,5 @@ void el_column_find() {
 	el_address();
 	el_table_find();
 
-	ui_element_finish( id );
+	el_finish;
 }

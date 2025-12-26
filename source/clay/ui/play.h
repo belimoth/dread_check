@@ -34,7 +34,7 @@
 //
 // 	//
 //
-// 	ui_element_finish( id );
+// 	el_finish;
 // }
 //
 // void el_table_play_on_ui_event( ui_event event ) {
@@ -48,7 +48,7 @@
 //
 // 	for ( int i = 0; i < array_count( views_play ); i++ ) el_table_play_row();
 //
-// 	ui_element_finish( id );
+// 	el_finish;
 // }
 
 void el_column_play() {
@@ -62,5 +62,5 @@ void el_column_play() {
 
 	//
 
-	ui_element_finish( id );
+	el_finish;
 }

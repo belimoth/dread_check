@@ -40,7 +40,7 @@ void el_table_layers_row() {
 // 	clay_ui_text( el_table_layers_get_data( 1, y ), color_fg );
 // 	self->child_position = position;
 
-	ui_element_finish( id );
+	el_finish;
 }
 
 //
@@ -103,7 +103,7 @@ void el_table_inspect_row() {
 	self->child_position = position;
 	self->child_position.y += self->child_size.y;
 
-	ui_element_finish( id );
+	el_finish;
 }
 
 //
@@ -122,7 +122,7 @@ void el_table_inspect() {
 	el_table_inspect_row();
 	el_table_inspect_row();
 
-	ui_element_finish( id );
+	el_finish;
 }
 
 //
@@ -136,7 +136,7 @@ void el_palette_on_ui_event( ui_event event ) {
 void el_palette() {
 	int id = ui_element_start();
 	ui_element_bind( clay.ui.data_palette, el_palette_on_ui_event );
-	ui_element_finish( id );
+	el_finish;
 }
 
 //
@@ -149,7 +149,7 @@ void el_debug() {
 	sprintf( table_buffer, "%f", clay.camera.rotation.y ); clay_ui_text( table_buffer, color_fg ); self->child_position.y += self->child_size.y;
 	sprintf( table_buffer, "%f", clay.camera.rotation.z ); clay_ui_text( table_buffer, color_fg ); self->child_position.y += self->child_size.y;
 
-	ui_element_finish( id );
+	el_finish;
 }
 
 //
@@ -172,5 +172,5 @@ void el_column_inspect() {
 	el_header( "DEBUG" );
 	el_debug();
 
-	ui_element_finish( id );
+	el_finish;
 }

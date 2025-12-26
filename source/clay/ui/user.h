@@ -12,5 +12,5 @@ void el_column_user() {
 
 	el_header( "USER" );
 
-	ui_element_finish( id );
+	el_finish;
 }

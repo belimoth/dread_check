@@ -14,7 +14,7 @@ void el_menu_row( string text ) {
 
 	clay_ui_text( text, color_fg );
 
-	ui_element_finish( id );
+	el_finish;
 }
 
 void el_menu_play() {
@@ -69,5 +69,5 @@ void el_column_menu() {
 	el_menu_itch();
 	el_menu_user();
 
-	ui_element_finish( id );
+	el_finish;
 }
