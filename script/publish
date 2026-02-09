@@ -15,8 +15,6 @@ mode=${1:-"staging"}
 	exit 1
 }
 
-
-
 #
 
 rm --recursive --force /a/local/publish/$mode

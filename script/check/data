@@ -5,5 +5,5 @@ set -o errexit
 [[ $( command -v xxhsum ) ]] || { echo error: xxhsum required; exit 1; }
 
 cd /a/local/data
-find . -type f -print0 | xargs -0 xxhsum > /a/local/data_index.txt
-code --diff /a/data/index.txt /a/local/data_index.txt
+find . -type f -print0 | xargs -0 xxhsum > /a/local/index/data.txt
+code --diff /a/index/data.txt /a/local/index/data.txt
