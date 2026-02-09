@@ -9,7 +9,25 @@
 
 void game_menu_main( game_menu &menu, game_menu_signal signal );
 
+int chapter_temp = 0;
+
+enum game_chapter {
+	chapter_none = 0,
+	#define field( name ) chapter_##name,
+	#include "../../../data/chapter.inl"
+	#undef field
+};
+
 void draw_title() {
+	zed_texture texture_title;
+
+	switch ( chapter_temp ) {
+		case chapter_none:        texture_title = texture_title_main; break;
+		#define field( name ) case chapter_##name: texture_title = texture_title_##name; break;
+		#include "../../../data/chapter.inl"
+		#undef field
+	}
+
 	zed_pass_reset( pass_title );
 	zed_pass_use( texture_title );
 
@@ -44,8 +62,8 @@ void draw_title_maze() {
 	zed_pass_reset( pass_title );
 	zed_pass_use( gfx_start_1984 );
 
-	float w = texture_title.size.x;
-	float h = texture_title.size.y;
+	float w = 320; // texture_title.size.x;
+	float h = 240; // texture_title.size.y;
 
 	game.draw.matrix_world = identity;
 

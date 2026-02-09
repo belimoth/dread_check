@@ -21,8 +21,13 @@ zed_pass pass_debug_overdraw;
 
 // title
 
-zed_texture texture_title;
-zed_pass    pass_title;
+zed_texture texture_title_main;
+
+#define field( name ) zed_texture texture_title_##name;
+#include "../../data/chapter.inl"
+#undef field
+
+zed_pass pass_title;
 
 // menu
 
@@ -149,7 +154,12 @@ void data_gfx_game_init() {
 
 	// title
 
-	zed_texture_new_2d( texture_title, "data/texture/title.dds" );
+	zed_texture_new_2d( texture_title_main,        "data/texture/title/dread_check.dds" );
+
+	#define field( name ) zed_texture_new_2d( texture_title_##name, "data/texture/title/##name##.dds" );
+	#include "../../data/chapter.inl"
+	#undef field
+
 	zed_pass_new( pass_title, "data/shader/game/title.hlsl" );
 
 	// menu
