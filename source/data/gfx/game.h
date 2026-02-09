@@ -230,9 +230,9 @@ void data_gfx_game_init() {
 	zed_pass_new( pass_pc_screen, "data/shader/wolf/screen.hlsl" );
 	zed_mesh_new( mesh_pc,        "data/model/pc-body.obj"       );
 	zed_mesh_new( mesh_pc_screen, "data/model/pc-screen.obj"     );
-	zed_texture_new_2d( texture_pc_screen, "data/start/start.dds" );
-	zed_texture_new_2d( gfx_start_1992,    "data/start/1992.dds"  );
-	zed_texture_new_2d( gfx_start_1984,    "data/start/1984.dds"  );
+	zed_texture_new_2d( texture_pc_screen, "data/texture/start/start.dds" );
+	zed_texture_new_2d( gfx_start_1992,    "data/texture/start/1992.dds"  );
+	zed_texture_new_2d( gfx_start_1984,    "data/texture/start/1984.dds"  );
 
 	zed_canvas_new( canvas_pc_screen, 320, 240 );
 

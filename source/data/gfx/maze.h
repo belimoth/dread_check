@@ -46,15 +46,15 @@ void data_gfx_maze_init() {
 	zed_pass_new( pass_chest,      "data/shader/maze/chest.hlsl", ied_maze, 4 );
 	zed_pass_new( pass_snow,       "data/shader/maze/snow.hlsl",  ied_snow, 1 );
 
-	zed_texture_new_2d( gfx_maze,       "data/texture/maze.dds"       );
-	zed_texture_new_2d( gfx_maze_mm,    "data/texture/maze_mm.dds"    );
-	zed_texture_new_2d( gfx_maze_mm_nn, "data/texture/maze_mm_nn.dds" );
-	zed_texture_new_2d( gfx_maze_lod_a, "data/texture/maze_lod_a.dds" );
-	zed_texture_new_2d( gfx_maze_lod_b, "data/texture/maze_lod_b.dds" );
-	zed_texture_new_2d( gfx_maze_mm_x2, "data/texture/maze_mm_x2.dds" );
-	zed_texture_new_2d( gfx_maze_mm_x4, "data/texture/maze_mm_x4.dds" );
-	zed_texture_new_2d( gfx_maze_mm_x8, "data/texture/maze_mm_x8.dds" );
-	zed_texture_new_2d( gfx_maze_mm_xx, "data/texture/maze_mm_xx.dds" );
+	zed_texture_new_2d( gfx_maze,       "data/texture/maze/wall.dds"       );
+	zed_texture_new_2d( gfx_maze_mm,    "data/texture/maze/wall_mm.dds"    );
+	zed_texture_new_2d( gfx_maze_mm_nn, "data/texture/maze/wall_mm_nn.dds" );
+	zed_texture_new_2d( gfx_maze_lod_a, "data/texture/maze/wall_lod_a.dds" );
+	zed_texture_new_2d( gfx_maze_lod_b, "data/texture/maze/wall_lod_b.dds" );
+	zed_texture_new_2d( gfx_maze_mm_x2, "data/texture/maze/wall_mm_x2.dds" );
+	zed_texture_new_2d( gfx_maze_mm_x4, "data/texture/maze/wall_mm_x4.dds" );
+	zed_texture_new_2d( gfx_maze_mm_x8, "data/texture/maze/wall_mm_x8.dds" );
+	zed_texture_new_2d( gfx_maze_mm_xx, "data/texture/maze/wall_mm_xx.dds" );
 
 	zed_buffer_new_instance( data_maze,  zed_data( maze.data  ) );
 	zed_buffer_new_instance( data_chest, zed_data( maze.chest ) );
