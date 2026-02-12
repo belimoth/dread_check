@@ -4,7 +4,7 @@
 #pragma comment( lib, "advapi32.lib" )
 #pragma comment( lib, "shell32.lib" )
 
-// todo this should prevent the creation of "draugb.lib" and "draugb.exp"
+// todo this should prevent the creation of "dread_check.lib" and "dread_check.exp"
 // todo but it doesn't
 #define PHYSFS_DECL
 
@@ -15,5 +15,5 @@ void physfs_init() {
 	do {} while( ! PHYSFS_init( 0 ) );
 	PHYSFS_permitSymbolicLinks( true );
 	PHYSFS_mount( ".", 0, true );
-	PHYSFS_mount( "draugb.exe", 0, true );
+	PHYSFS_mount( "dread_check.exe", 0, true );
 }

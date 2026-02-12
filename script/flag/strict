@@ -6,4 +6,4 @@ a:/source/main.cpp
 -Zi -FC -D DEBUG -D zed_mode_debug
 -I a:/include
 -I a:/local/vend/include
--link main.res -libpath:a:/local/vend/lib -incremental:no -subsystem:windows -out:draugb.exe
+-link main.res -libpath:a:/local/vend/lib -incremental:no -subsystem:windows -out:dread_check.exe

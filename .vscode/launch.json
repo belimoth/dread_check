@@ -5,7 +5,7 @@
 			"name": "(Windows) Launch",
 			"type": "cppvsdbg",
 			"request": "launch",
-			"program": "a:/local/build/debug/draugb.exe",
+			"program": "a:/local/build/debug/dread_check.exe",
 			"args": [ "--debug" ],
 			"stopAtEntry": false,
 			"cwd": "a:/local/run",

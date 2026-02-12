@@ -28,8 +28,8 @@ cd                     /a/local/build/$mode
 source msvc.sh
 # rc -nologo -fo main.res a:/source/main.rc
 cl @a:/script/flag/$mode
-[[ -f /a/static/manifest.xml ]] || link -nologo /a/local/build/$mode/main.obj -libpath:a:/local/vend/lib -manifest -manifestfile:a:/static/manifest.xml -out:a:/local/build/$mode/draugb.exe
-mt -nologo -manifest a:/static/manifest.xml -outputresource:a:/local/build/$mode/draugb.exe;#1
+[[ -f /a/static/manifest.xml ]] || link -nologo /a/local/build/$mode/main.obj -libpath:a:/local/vend/lib -manifest -manifestfile:a:/static/manifest.xml -out:a:/local/build/$mode/dread_check.exe
+mt -nologo -manifest a:/static/manifest.xml -outputresource:a:/local/build/$mode/dread_check.exe;#1
 
 # clang
 
@@ -58,7 +58,7 @@ mt -nologo -manifest a:/static/manifest.xml -outputresource:a:/local/build/$mode
 # 	rm --force /a/local/build/release/data.zip
 # 	zip -0 --recurse-paths/a/local/build/release/data.zip ./data --exclude .\\data\\debug\\*
 # 	mkdir --parents /a/local/build/release-fused
-# 	cat /a/local/build/release/draugb.exe /a/local/build/release/data.zip > /a/local/build/release-fused/draugb.exe
+# 	cat /a/local/build/release/dread_check.exe /a/local/build/release/data.zip > /a/local/build/release-fused/dread_check.exe
 # }
 
 #

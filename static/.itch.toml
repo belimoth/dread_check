@@ -1,4 +1,4 @@
 [[actions]]
 name  = "play"
-path  = "draugb.exe"
+path  = "dread_check.exe"
 scope = "profile:me"

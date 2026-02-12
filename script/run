@@ -21,4 +21,4 @@ ln --symbolic /a/local/data                          .
 ln --symbolic /a/local/vend/bin/ds5w_x64.dll         .
 ln --symbolic /a/local/vend/bin/discord_game_sdk.dll .
 
-/a/local/build/profile/draugb.exe "$@"
+/a/local/build/profile/dread_check.exe "$@"

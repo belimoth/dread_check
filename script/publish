@@ -29,18 +29,16 @@ cd $_
 build release
 
 [[ $mode == "staging" ]] && {
-	cp /a/local/build/debug/draugb.exe   ./draugb_debug.exe
-	cp /a/local/build/profile/draugb.exe ./draugb_profile.exe
-	cp /a/local/vend/bin/ds5w_X64.dll  .
+	cp /a/local/build/debug/dread_check.exe   ./dread_check_debug.exe
+	cp /a/local/build/profile/dread_check.exe ./dread_check_profile.exe
+	cp /a/local/vend/bin/ds5w_X64.dll .
 }
 
-cp /a/local/build/release/draugb.exe .
+cp /a/local/build/release/dread_check.exe .
 cp /a/static/.itch.toml              .
 cp --recursive /a/local/build/release/data ./data
 
 butler validate /a/local/publish/$mode
 
-channel="belimoth/draugb:windows"
-[[ $mode == "staging" ]] && channel="belimoth/draugb-staging:windows"
-
-butler push /a/local/publish/$mode $channel
+[[ $mode == "staging"    ]] && butler push /a/local/publish/staging    "belimoth/dread-check-staging:windows"
+[[ $mode == "production" ]] && butler push /a/local/publish/production "belimoth/dread-check:windows"

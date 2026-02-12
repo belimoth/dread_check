@@ -33,7 +33,7 @@ void app_ui_draw();
 void app_ui_on_system_event( app_system_event );
 
 void main_init() {
-	app.config.title = "DRAUGB";
+	app.config.title = "DREAD CHECK";
 	app.config.window.type = app_window_type_game;
 }
 

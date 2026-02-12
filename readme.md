@@ -1,4 +1,4 @@
-# DRAUGB
+# DREAD CHECK
 
 ## Requirements
 
@@ -27,7 +27,7 @@ These can edit and save dds textures:
 ## Development
 
 ### Starting a development environment
-1. Open the `draugb` folder in VS Code.
+1. Open the `dread_check` folder in VS Code.
 2. Open the integrated terminal.
 3. Run the `start` script:
 

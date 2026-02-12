@@ -17,6 +17,6 @@ void itch_init() {
 
 void itch_detect() {
 	// todo
-	// detect whether draugb has been installed with the itch app
-	// detect whether draugb has been launched with the itch app
+	// detect whether dread check has been installed with the itch app
+	// detect whether dread check has been launched with the itch app
 }
