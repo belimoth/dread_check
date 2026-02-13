@@ -11,7 +11,7 @@
 
 #include <zed/platform/github.h>
 #include <zed/platform/itch.h>
-#include <zed/platform/discord.h>
+// #include <zed/platform/discord.h>
 #include <zed/platform/x64.h>
 
 #include "clay.cpp"

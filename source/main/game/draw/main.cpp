@@ -51,7 +51,8 @@ void game_draw_world() {
 
 // matrix pc_position = translate( 0, 1, -4 );
 // matrix pc_position = translate( 0, 1, -1.5 );
-matrix pc_position = translate( -0.15, 1, -1.1 );
+// matrix pc_position = translate( -0.15, 1, -1.1 );
+matrix pc_position = translate( 0, 1, -4 );
 
 void game_draw_pc() {
 	game.draw.per_object.matrix_world = rotate( 0, dtor(-90), 0 ) * scale(0.3) * pc_position;
