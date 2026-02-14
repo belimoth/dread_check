@@ -4,6 +4,6 @@ set -o errexit
 
 [[ $( command -v xxhsum ) ]] || { echo error: xxhsum required; exit 1; }
 
-cd /a/local/data
-find . -type f -print0 | xargs -0 xxhsum > /a/local/index/data.txt
+mkdir --parents /a/local/index
+find /a/local/data -type f -print0 | xargs -0 xxhsum | sed "s|A:/local/data/||" > /a/local/index/data.txt
 code --diff /a/index/data.txt /a/local/index/data.txt

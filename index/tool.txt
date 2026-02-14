@@ -1,4 +1,4 @@
-a41bffb36cb180c4  ./7z.dll
-0c6e934dcd3d3d6a  ./butler.exe
-dcd06b956255aed4  ./c7zip.dll
-5e8cb390bd533d22  ./xxhsum.exe
+a41bffb36cb180c4  7z.dll
+0c6e934dcd3d3d6a  butler.exe
+dcd06b956255aed4  c7zip.dll
+5e8cb390bd533d22  xxhsum.exe

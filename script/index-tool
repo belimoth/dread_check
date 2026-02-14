@@ -4,6 +4,5 @@ set -o errexit
 
 [[ $( command -v xxhsum ) ]] || { echo error: xxhsum required; exit 1; }
 
-cd /a/local/tool
-find . -type f -print0 | xargs -0 xxhsum > /a/local/index/tool.txt
+find /a/local/tool -type f -print0 | xargs -0 xxhsum | sed "s|A:/local/tool/||" > /a/local/index/tool.txt
 code --diff /a/index/tool.txt /a/local/index/tool.txt

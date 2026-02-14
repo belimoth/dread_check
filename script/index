@@ -1,0 +1,5 @@
+#!/bin/bash
+
+index-archive
+index-data
+index-tool
