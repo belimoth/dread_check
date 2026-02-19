@@ -28,13 +28,13 @@ void el_table_tool_row() {
 	el_finish;
 }
 
-void el_table_tool_on_ui_event( ui_event event ) {
+void el_table_tool_on( ui_event event ) {
 	handle_ui_event_for_list( event, &clay.ui.data_tool );
 }
 
 void el_table_tool() {
 	el_start;
-	el_bind( clay.ui.data_tool, el_table_tool_on_ui_event );
+	el_bind( clay.ui.data_tool, el_table_tool_on );
 	ui_element_set_table();
 
 	for ( int i = 0; i < clay.tool.tool_i; i++ ) el_table_tool_row();

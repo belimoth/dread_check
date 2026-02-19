@@ -31,12 +31,12 @@ void pick() {
 	cursor = result;
 }
 
-void tool_room_on_ui_event( ui_event event );
+void tool_room_on( ui_event event );
 
-void clay_edit_world_on_ui_event( ui_event event ) {
+void clay_edit_world_on( ui_event event ) {
 	switch ( tool_i ) {
 		case tool_pick: break;
-		case tool_room: tool_room_on_ui_event( event ); return;
+		case tool_room: tool_room_on( event ); return;
 		case tool_yard: break;
 		case tool_wall: break;
 		case tool_tour: break;

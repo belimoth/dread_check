@@ -87,7 +87,7 @@ void ui_element_finish( int id, string text ) {
 		printf( "%2i %4.0f %4.0f %4.0f %4.0f %p %s\n", self.id, self.position.x, self.position.y, self.size.x, self.size.y, (void *)self.handle_ui_event, text );
 }
 
-void ui_element_set_height( int height ) {
+void ui_element_set_size_y( int height ) {
 	ui_element_step_node &self   = ui.data.step_nodes[ ui.id_current  ];
 	ui_element_step_node &parent = ui.data.step_nodes[ self.id_parent ];
 	if ( parent.layout != ui_layout_block ) zed_die();

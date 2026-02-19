@@ -194,7 +194,7 @@ void latch_test( ui_event *event ) {
 int  ui_element_start();
 void ui_element_finish( int, string text = 0 );
 void ui_element_set_block();
-void ui_element_set_height( int );
+void ui_element_set_size_y( int );
 void ui_element_set_padding( int );
 void ui_element_set_padding( int, int );
 void ui_element_set_padding_for_text();

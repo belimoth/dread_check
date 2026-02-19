@@ -30,7 +30,7 @@ void el_table_edit_row() {
 	el_finish;
 }
 
-void el_table_edit_on_ui_event( ui_event event ) {
+void el_table_edit_on( ui_event event ) {
 	handle_ui_event_for_list( event, &clay.ui.data_edit );
 
 	int id = clay.ui.data_edit.id_target;
@@ -43,7 +43,7 @@ void el_table_edit_on_ui_event( ui_event event ) {
 
 void el_table_edit() {
 	el_start;
-	el_bind( clay.ui.data_edit, el_table_edit_on_ui_event );
+	el_bind( clay.ui.data_edit, el_table_edit_on );
 	ui_element_set_table();
 
 	for ( int i = 0; i < clay.edit.path_i; i++ ) el_table_edit_row();

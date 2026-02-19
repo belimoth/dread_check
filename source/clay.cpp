@@ -8,6 +8,7 @@ void clay_init() {
 	clay_edit_model_init();
 	clay_edit_world_init();
 	clay_find_init();
+	clay_sync_init();
 	clay_ui_init();
 	clay.scene = clay_scene_edit_model;
 	clay.page_edit = clay_page_edit_model;

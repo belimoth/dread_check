@@ -8,7 +8,7 @@
 #define el_start        int id = ui_element_start();
 #define el_finish       ui_element_finish( id );
 #define el_block        ui_element_set_block();
-#define el_size( x )    ui_element_set_height( x );
+#define el_size( x )    ui_element_set_size_y( x );
 #define el_pad( x )     ui_element_set_padding( x );
 #define el_pad( x, y )  ui_element_set_padding( x, y );
 #define el_bind( x, y ) ui_element_bind( x, y );
@@ -71,7 +71,7 @@ void clay_ui_text( string text, uint color ) {
 void el_header( string text ) {
 	el_start;
 	el_block;
-	ui_element_set_height( 96 );
+	ui_element_set_size_y( 96 );
 	ui_element_set_padding( 16, 0 );
 	clay_ui_text( text, color_clay_fg );
 	ui_element_finish( id, text );
@@ -80,7 +80,7 @@ void el_header( string text ) {
 void el_br() {
 	el_start;
 	el_block;
-	ui_element_set_height(2);
+	ui_element_set_size_y(2);
 	clay_ui_draw_border();
 	el_finish;
 }

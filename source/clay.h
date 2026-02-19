@@ -64,6 +64,7 @@ struct clay_ui {
 	ui_element_data data_view;
 	ui_element_data data_edit;
 	ui_element_data data_find;
+	ui_element_data data_sync;
 
 	ui_element_data data_tool;
 

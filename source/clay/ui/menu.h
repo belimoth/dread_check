@@ -45,7 +45,7 @@ void el_menu_user() {
 	el_menu_row( "USER" );
 }
 
-void el_menu_on_ui_event( ui_event event ) {
+void el_menu_on( ui_event event ) {
 	handle_ui_event_for_list( event, &clay.ui.data_menu );
 
 	if ( clay.ui.data_menu.id_preview != -1 ) {
@@ -57,7 +57,7 @@ void el_menu_on_ui_event( ui_event event ) {
 
 void el_column_menu() {
 	el_start;
-	el_bind( clay.ui.data_menu, el_menu_on_ui_event );
+	el_bind( clay.ui.data_menu, el_menu_on );
 	clay_ui_draw_fill();
 	ui_element_set_table( 96 );
 

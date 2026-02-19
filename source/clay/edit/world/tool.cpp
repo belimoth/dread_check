@@ -31,7 +31,7 @@ void snap_to_either( float3 *position ) {
 	position->z = round( position->z * 2 ) / 2;
 }
 
-void tool_room_on_ui_event( ui_event event ) {
+void tool_room_on( ui_event event ) {
 	pick();
 	float3 position = cursor;
 	snap_to_center( &position );

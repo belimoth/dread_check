@@ -4,7 +4,7 @@
 
 #include <zed/app/ui.h>
 
-void edit_model_on_ui_event( ui_event );
+void edit_model_on( ui_event );
 
 string el_table_assets_get_data( int x, int y ) {
 	if ( x == 0 and y == 0 ) return "abc";
@@ -46,7 +46,7 @@ void el_table_assets() {
 void el_column_main() {
 	el_start;
 	ui_element_step_node *self = ui.data.step_nodes + id;
-	self->handle_ui_event = edit_model_on_ui_event;
+	self->handle_ui_event = edit_model_on;
 	// clay_ui_draw_fill();
 	el_block;
 

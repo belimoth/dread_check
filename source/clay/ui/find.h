@@ -1,8 +1,8 @@
 #pragma once
 
-#include <zed/app/ui.h>
-
 #include "../ui.h"
+
+#include <zed/app/ui.h>
 
 string find_path[64];
 int find_path_i;
@@ -37,13 +37,13 @@ void el_table_find_row() {
 	el_finish;
 }
 
-void el_table_find_on_ui_event( ui_event event ) {
+void el_table_find_on( ui_event event ) {
 	handle_ui_event_for_list( event, &clay.ui.data_find );
 }
 
 void el_table_find() {
 	el_start;
-	el_bind( clay.ui.data_find, el_table_find_on_ui_event );
+	el_bind( clay.ui.data_find, el_table_find_on );
 	ui_element_set_table();
 
 	for ( int i = 0; i < find_path_i; i++ ) el_table_find_row();

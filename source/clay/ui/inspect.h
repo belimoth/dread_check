@@ -7,7 +7,7 @@
 
 //
 
-void el_table_layers_on_ui_event( ui_event event ) {
+void el_table_layers_on( ui_event event ) {
 	handle_ui_event_for_list( event, &clay.ui.data_layers );
 }
 
@@ -47,7 +47,7 @@ void el_table_layers_row() {
 
 void el_table_layers() {
 	el_start;
-	el_bind( clay.ui.data_layers, el_table_layers_on_ui_event );
+	el_bind( clay.ui.data_layers, el_table_layers_on );
 	ui_element_set_table( 48 );
 
 	el_table_layers_row();
@@ -59,7 +59,7 @@ void el_table_layers() {
 
 //
 
-void el_table_inspect_on_ui_event( ui_event event ) {
+void el_table_inspect_on( ui_event event ) {
 	handle_ui_event_for_list( event, &clay.ui.data_inspect );
 }
 
@@ -110,7 +110,7 @@ void el_table_inspect_row() {
 
 void el_table_inspect() {
 	el_start;
-	el_bind( clay.ui.data_inspect, el_table_inspect_on_ui_event );
+	el_bind( clay.ui.data_inspect, el_table_inspect_on );
 	ui_element_set_table( 48 );
 
 	el_table_inspect_row();
@@ -127,7 +127,7 @@ void el_table_inspect() {
 
 //
 
-void el_palette_on_ui_event( ui_event event ) {
+void el_palette_on( ui_event event ) {
 
 }
 
@@ -135,7 +135,7 @@ void el_palette_on_ui_event( ui_event event ) {
 
 void el_palette() {
 	el_start;
-	el_bind( clay.ui.data_palette, el_palette_on_ui_event );
+	el_bind( clay.ui.data_palette, el_palette_on );
 	el_finish;
 }
 

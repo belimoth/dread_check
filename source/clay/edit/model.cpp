@@ -7,7 +7,7 @@
 #include <zed/app/graphics.h>
 #include <zed/app/ui.h>
 
-void tool_camera_on_ui_event( ui_event event ) {
+void tool_camera_on( ui_event event ) {
 	switch( event.type ) {
 		case event_type_wheel:
 		clay.edit_model.camera_zoom += -event.delta.z * 0.1;
@@ -48,7 +48,7 @@ void tool_camera_on_ui_event( ui_event event ) {
 	}
 }
 
-void tool_cursor_on_ui_event( ui_event event ) {
+void tool_cursor_on( ui_event event ) {
 	switch( event.type ) {
 		case event_type_wheel:
 		clay.edit_model.camera_zoom += -event.delta.z * 0.1;
@@ -86,10 +86,10 @@ void tool_cursor_on_ui_event( ui_event event ) {
 	}
 }
 
-void edit_model_on_ui_event( ui_event event ) {
+void edit_model_on( ui_event event ) {
 	switch ( event.type ) {
 		case event_type_wheel:
-		tool_camera_on_ui_event( event );
+		tool_camera_on( event );
 		break;
 
 		case event_type_down:
@@ -99,8 +99,8 @@ void edit_model_on_ui_event( ui_event event ) {
 
 		switch ( event.which ) {
 			case 0: break;
-			case 1: tool_camera_on_ui_event( event ); break;
-			case 2: tool_cursor_on_ui_event( event ); break;
+			case 1: tool_camera_on( event ); break;
+			case 2: tool_cursor_on( event ); break;
 		}
 
 		break;

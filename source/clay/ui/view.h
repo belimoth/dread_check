@@ -37,13 +37,13 @@ void el_table_view_row() {
 	el_finish;
 }
 
-void el_table_view_on_ui_event( ui_event event ) {
+void el_table_view_on( ui_event event ) {
 	handle_ui_event_for_list( event, &clay.ui.data_view );
 }
 
 void el_table_view() {
 	el_start;
-	el_bind( clay.ui.data_view, el_table_view_on_ui_event );
+	el_bind( clay.ui.data_view, el_table_view_on);
 	ui_element_set_table( 48 );
 
 	for ( int i = 0; i < array_count( view_names ); i++ ) el_table_view_row();

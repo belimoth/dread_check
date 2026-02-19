@@ -20,9 +20,9 @@ void clay_edit_world_init() {
 
 	// todo
 
-	// ui.root.handle_ui_event = edit_world_on_ui_event;
+	// ui.root.handle_ui_event = edit_world_on;
 
-	ui.handle_ui_event = clay_edit_world_on_ui_event;
+	ui.handle_ui_event = clay_edit_world_on;
 }
 
 void clay_edit_world_step() {
