@@ -67,13 +67,13 @@ void game_menu_item_continue( game_menu &menu, float x, float y ) {
 }
 
 void game_menu_item_status( game_menu &menu, float x, float y ) {
-	if ( true ) {
-		game_menu_label( menu, "Gamepad detected", x, y );
-	} else {
-		game_menu_label( menu, "Gamepad recommended", x, y );
-	}
+	// if ( true ) {
+	// 	game_menu_label( menu, "Gamepad detected", x, y );
+	// } else {
+	// 	game_menu_label( menu, "Gamepad recommended", x, y );
+	// }
 
-	game_menu_item( menu, name_status[menu_status_i], x, y + 20, game_menu_cb { toggle_status(); });
+	game_menu_item( menu, name_status[menu_status_i], x, y, game_menu_cb { toggle_status(); });
 }
 
 void game_menu_item_face( game_menu &menu, float x, float y, game_menu_cb_t action = {} ) {
@@ -109,10 +109,10 @@ void game_menu_item_squad( game_menu &menu, float x, float y ) {
 	if ( menu.signal == game_menu_signal_render ) {
 		zed_pass_reset( pass_title );
 
-		if ( local_player_count >= 1 ) zed_draw_image( gfx_face[ roster[ menu_character_0_i ].face_i ], x + 64 * 0, y );
-		if ( local_player_count >= 2 ) zed_draw_image( gfx_face[ roster[ menu_character_1_i ].face_i ], x + 64 * 1, y );
-		if ( local_player_count >= 3 ) zed_draw_image( gfx_face[ roster[ menu_character_2_i ].face_i ], x + 64 * 2, y );
-		if ( local_player_count == 4 ) zed_draw_image( gfx_face[ roster[ menu_character_3_i ].face_i ], x + 64 * 3, y );
+		if ( local_player_count >= 1 ) zed_draw_image( gfx_face_default, x + 64 * 0, y );
+		if ( local_player_count >= 2 ) zed_draw_image( gfx_face_default, x + 64 * 1, y );
+		if ( local_player_count >= 3 ) zed_draw_image( gfx_face_default, x + 64 * 2, y );
+		if ( local_player_count == 4 ) zed_draw_image( gfx_face_default, x + 64 * 3, y );
 
 		if ( menu.state.x == 0 and menu.state.y == id ) {
 			zed_draw_rect_empty( x, y, w, h, get_color_fg( menu, id ), 2 );

@@ -33,28 +33,7 @@ zed_texture texture_title_main_action;
 zed_texture texture_title_main_adventure;
 zed_texture texture_title_main_options;
 
-zed_texture texture_title_alien_intel_0;
-zed_texture texture_title_alien_intel_1;
-zed_texture texture_title_alien_intel_classic;
-zed_texture texture_title_blue_monsoon_0;
-zed_texture texture_title_blue_monsoon_1;
-zed_texture texture_title_blue_monsoon_2;
-zed_texture texture_title_swat_city_0;
-zed_texture texture_title_swat_city_1;
-
-zed_texture texture_title_blood_flush;
-zed_texture texture_title_cryoshock;
 zed_texture texture_title_draugb;
-zed_texture texture_title_full_metal_express;
-zed_texture texture_title_gate_quake;
-zed_texture texture_title_hazard_company;
-zed_texture texture_title_horse_war;
-zed_texture texture_title_howling_commandos;
-zed_texture texture_title_plastic_platoon;
-zed_texture texture_title_primitive_streak;
-zed_texture texture_title_route_66;
-zed_texture texture_title_swat_city;
-zed_texture texture_title_threefold_path;
 
 zed_pass pass_title;
 
@@ -64,6 +43,7 @@ zed_texture texture_faces;
 zed_texture texture_face_default;
 zed_pass    pass_face;
 zed_texture gfx_face[150];
+zed_texture gfx_face_default;
 
 D3D11_INPUT_ELEMENT_DESC ied_face[] = {
 	{ "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA,   0 },
@@ -195,28 +175,7 @@ void data_gfx_game_init() {
 	zed_texture_new_2d( texture_title_main_adventure,      "data/texture/title/dread_check_adventure.dds" );
 	zed_texture_new_2d( texture_title_main_options,        "data/texture/title/dread_check_options.dds"   );
 
-	zed_texture_new_2d( texture_title_alien_intel_0,       "data/texture/title/alien_intel_0.dds"         );
-	zed_texture_new_2d( texture_title_alien_intel_1,       "data/texture/title/alien_intel_1.dds"         );
-	zed_texture_new_2d( texture_title_alien_intel_classic, "data/texture/title/alien_intel_classic.dds"   );
-	zed_texture_new_2d( texture_title_swat_city_0,         "data/texture/title/swat_city_0.dds"           );
-	zed_texture_new_2d( texture_title_swat_city_1,         "data/texture/title/swat_city_1.dds"           );
-	zed_texture_new_2d( texture_title_blue_monsoon_0,      "data/texture/title/blue_monsoon_0.dds"        );
-	zed_texture_new_2d( texture_title_blue_monsoon_1,      "data/texture/title/blue_monsoon_1.dds"        );
-	zed_texture_new_2d( texture_title_blue_monsoon_2,      "data/texture/title/blue_monsoon_2.dds"        );
-
-	zed_texture_new_2d( texture_title_blood_flush,         "data/texture/title/blood_flush.dds"           );
-	zed_texture_new_2d( texture_title_cryoshock,           "data/texture/title/cryoshock.dds"             );
 	zed_texture_new_2d( texture_title_draugb,              "data/texture/title/draugb.dds"                );
-	zed_texture_new_2d( texture_title_full_metal_express,  "data/texture/title/full_metal_express.dds"    );
-	zed_texture_new_2d( texture_title_gate_quake,          "data/texture/title/gate_quake.dds"            );
-	zed_texture_new_2d( texture_title_hazard_company,      "data/texture/title/hazard_company.dds"        );
-	zed_texture_new_2d( texture_title_horse_war,           "data/texture/title/horse_war.dds"             );
-	zed_texture_new_2d( texture_title_howling_commandos,   "data/texture/title/howling_commandos.dds"     );
-	zed_texture_new_2d( texture_title_plastic_platoon,     "data/texture/title/plastic_platoon.dds"       );
-	zed_texture_new_2d( texture_title_primitive_streak,    "data/texture/title/primitive_streak.dds"      );
-	zed_texture_new_2d( texture_title_route_66,            "data/texture/title/route_66.dds"              );
-	zed_texture_new_2d( texture_title_swat_city,           "data/texture/title/swat_city.dds"             );
-	zed_texture_new_2d( texture_title_threefold_path,      "data/texture/title/threefold_path.dds"        );
 
 	zed_pass_new( pass_title, "data/shader/game/title.hlsl" );
 
@@ -231,6 +190,8 @@ void data_gfx_game_init() {
 		sprintf( temp, "data/texture/face/%i.dds", i );
 		zed_texture_new_2d( gfx_face[i], temp );
 	}
+
+	zed_texture_new_2d( gfx_face_default, "data/texture/default.dds" );
 
 	// sky
 

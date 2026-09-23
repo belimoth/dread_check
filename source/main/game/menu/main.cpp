@@ -39,9 +39,9 @@ void game_menu_main( game_menu &menu, game_menu_signal signal ) {
 
 	switch ( menu.state.page ) {
 		case game_menu_page_start: {
-			game_menu_item_dread_check( menu, "Play",     x +   0, y +  0, 1, game_menu_cb { game_menu_push( menu, game_menu_page_play    ); });
-			game_menu_item_dread_check( menu, "Credits",  x + 190, y + 35, 0, game_menu_cb { game_menu_push( menu, game_menu_page_credits ); });
-			game_menu_item_dread_check( menu, "Exit",     x +   0, y + 70, 1, game_menu_cb { app_exit();                                     });
+			game_menu_item_dread_check( menu, "Play",     x +   0, y +  0, 1, game_menu_cb { game_menu_push( menu, game_menu_page_play  ); });
+			game_menu_item_dread_check( menu, "Packs",    x + 190, y + 35, 0, game_menu_cb { game_menu_push( menu, game_menu_page_packs ); });
+			game_menu_item_dread_check( menu, "Exit",     x +   0, y + 70, 1, game_menu_cb { app_exit(); });
 			game_menu_item_continue   ( menu,             x +   0, y - 70 );
 			game_menu_item_dread_check( menu, "Options",  x + 190, y - 35, 0, game_menu_cb { game_menu_push( menu, game_menu_page_options ); });
 
@@ -82,7 +82,7 @@ void game_menu_main( game_menu &menu, game_menu_signal signal ) {
 
 			game_menu_item_back  ( menu, x,  0 );
 			game_menu_item_status( menu, x, 20 );
-			// game_menu_item_squad ( menu, x, 40 );
+			game_menu_item_squad ( menu, x, 40 );
 		} break;
 
 		case game_menu_page_play_action: {
@@ -109,7 +109,7 @@ void game_menu_main( game_menu &menu, game_menu_signal signal ) {
 
 			game_menu_item_back  ( menu, x,  0 );
 			game_menu_item_status( menu, x, 20 );
-			// game_menu_item_squad ( menu, x, 40 );
+			game_menu_item_squad ( menu, x, 40 );
 		} break;
 
 		case game_menu_page_play_adventure_find: {
@@ -176,9 +176,10 @@ void game_menu_main( game_menu &menu, game_menu_signal signal ) {
 			game_menu_item( menu, "Empty", x, y + 120 );
 			game_menu_item( menu, "Empty", x, y + 140 );
 
-			game_menu_item_back ( menu, x,  0 );
 			game_menu_item( menu, "Prev", x,                                             220, game_menu_cb { });
 			game_menu_item( menu, "Next", x + 320 - app_graphics_text_measure( "Next" ), 220, game_menu_cb { });
+			game_menu_item_back ( menu, x,  0 );
+
 		} break;
 
 		case game_menu_page_play_adventure_new: {
@@ -190,13 +191,12 @@ void game_menu_main( game_menu &menu, game_menu_signal signal ) {
 			char text_cheats [32]; sprintf( text_cheats,  "Cheats: %i", 0 );
 
 
-			game_menu_item( menu, "Chapter",     x,                                                    60, game_menu_cb { game_menu_push( menu, game_menu_page_play_adventure_campaign );        });
-			game_menu_item( menu, "Random",      x + 320 - app_graphics_text_measure( "Random" ),      60, game_menu_cb { menu_campaign_i = zed_random_get( 0, array_count( name_campaign ) ); chapter_current = zed_random_get( 0, chapter_max );  });
-			game_menu_item( menu, text_privacy,  x,                                               y +  20, game_menu_cb { menu_privacy_i = ( menu_privacy_i + 1 ) % array_count( name_privacy ); });
-		 // game_menu_item( menu, text_chat,     x,                                               y +  40, game_menu_cb { menu_chat_i    = ( menu_chat_i    + 1 ) % array_count( name_chat    ); });
-		 // game_menu_item( menu, text_rules,    x,                                               y +  60 );
-		 // game_menu_item( menu, text_cheats,   x,                                               y +  80 );
-			game_menu_item( menu, "Launch Game", x,                                               y + 100 );
+			game_menu_item( menu, "Chapter",     x,      60, game_menu_cb { game_menu_push( menu, game_menu_page_play_adventure_campaign );        });
+			game_menu_item( menu, text_privacy,  x, y +  20, game_menu_cb { menu_privacy_i = ( menu_privacy_i + 1 ) % array_count( name_privacy ); });
+		 // game_menu_item( menu, text_chat,     x, y +  40, game_menu_cb { menu_chat_i    = ( menu_chat_i    + 1 ) % array_count( name_chat    ); });
+		 // game_menu_item( menu, text_rules,    x, y +  60 );
+		 // game_menu_item( menu, text_cheats,   x, y +  80 );
+			game_menu_item( menu, "Launch Game", x, y + 100 );
 
 			game_menu_item_back  ( menu, x,  0 );
 			game_menu_item_status( menu, x, 20 );
@@ -211,7 +211,7 @@ void game_menu_main( game_menu &menu, game_menu_signal signal ) {
 
 				game_menu_item( menu, text_campaign, x, 40 + 20 * i, game_menu_cb {
 					menu_campaign_i = i_static_temp;
-					// menu_chapter_i = 0;
+
 					// if ( i_static_temp == 0 ) {
 						// game_menu_push( menu, game_menu_page_play_adventure_chapter );
 					// } else {
@@ -240,7 +240,7 @@ void game_menu_main( game_menu &menu, game_menu_signal signal ) {
 
 			game_menu_item_back  ( menu, x,  0 );
 			game_menu_item_status( menu, x, 20 );
-			// game_menu_item_squad ( menu, x, 40 );
+			game_menu_item_squad ( menu, x, 40 );
 		} break;
 
 		case game_menu_page_roster: {
@@ -328,9 +328,7 @@ void game_menu_main( game_menu &menu, game_menu_signal signal ) {
 			sprintf( temp, "$%i", roster[ menu_character_0_i ].cash );
 			game_menu_label( menu, temp, x, y + 140 );
 
-			break;
-
-		}
+		} break;
 
 		case game_menu_page_options: {
 			game_menu_item( menu, "Input", x, y +  0, game_menu_cb { game_menu_push( menu, game_menu_page_options_input ); });
@@ -346,9 +344,8 @@ void game_menu_main( game_menu &menu, game_menu_signal signal ) {
 			game_menu_item( menu, "Multiplayer",  x, y + 20, game_menu_cb { game_menu_push( menu, game_menu_page_options_input_multiplayer  ); });
 
 			game_menu_item_back( menu, x,  0 );
+		} break;
 
-			break;
-		}
 		case game_menu_page_options_input_singleplayer: {
 			game_menu_item_back( menu, x,  0 );
 		} break;
@@ -384,11 +381,14 @@ void game_menu_main( game_menu &menu, game_menu_signal signal ) {
 		} break;
 
 		case game_menu_page_options_data: {
+			string steam_user = ""; // todo
+
 			char text[32];
 
-			sprintf( text, "User: %s",   app .user ); game_menu_label( menu, text, x, y +  0 );
-			sprintf( text, "Itch: %s",   itch.user ); game_menu_label( menu, text, x, y + 20 );
-			sprintf( text, "Seed: %08X", game.seed ); game_menu_label( menu, text, x, y + 40 );
+			sprintf( text, "User:  %s",   app .user  ); game_menu_label( menu, text, x, y +  0 );
+			sprintf( text, "Itch:  %s",   itch.user  ); game_menu_label( menu, text, x, y + 20 );
+			sprintf( text, "Steam: %s",   steam_user ); game_menu_label( menu, text, x, y + 40 );
+			sprintf( text, "Seed:  %08X", game.seed  ); game_menu_label( menu, text, x, y + 40 );
 
 			game_menu_item_back( menu, x,  0 );
 		} break;
@@ -397,64 +397,9 @@ void game_menu_main( game_menu &menu, game_menu_signal signal ) {
 			string credits[] = {
 				"DREAD CHECK",
 				"",
-				"Zachary Alexander",
-				"belimoth",
-				"Code, Design, Direction",
-				"",
-				"Ray \"Blambo\" Chen",
-				"Code",
-				"",
-				"",
-
-				"TESTING",
-				"",
-				"Andie Nare",
-				"Aubrey Serr",
-				"Derek Sneed",
-				"James Murff",
-				"Joseph Silverman",
-				"Peter Queckenstedt",
-				"",
-				"",
-
-				// "CHARACTER MODELS",
-				// "",
-				// "I've been kitbashing",
-				// "these from things I",
-				// "download and then",
-				// "remeshing and then",
-				// "decimating sorry I",
-				// "didn't keep track",
-				// "todo",
-				// "",
-
-				"ASSETS",
-				"",
-				"Richard Whitelock",
-				"AllSky",
-				"",
-				"lodgeb84",
-				"Low Poly Weapon Pack",
 				"",
 				"",
 				"",
-
-				"FONTS",
-				"",
-				"Ivano",
-				"somepx",
-				"Bacteria",
-				"",
-				"",
-				"",
-				"",
-				"",
-
-				"AUDIO",
-				"",
-				"Thievery",
-				"Fraud",
-				"Etc",
 				"",
 				"",
 				"",
@@ -469,21 +414,24 @@ void game_menu_main( game_menu &menu, game_menu_signal signal ) {
 			}
 
 			game_menu_item( menu, "Next", x + 320 - app_graphics_text_measure( "Next" ), 220, game_menu_cb { credits_page_i++; });
+		} break;
+
+		case game_menu_page_packs: {
+			zed_canvas_fill( canvas_x1, 0xF7E557 );
+
 			game_menu_item_back( menu, x, 0 );
-			game_menu_item( menu, "Prev", x, 220, game_menu_cb { credits_page_i = ( credits_page_i - 1 + 10 ) % 10; });
+
 		} break;
 
 		case game_menu_page_pause: {
 			string pause = game.is_paused ? "Unpause" : "Pause";
 			game_menu_item( menu, "Resume",  x, y +  0, game_menu_cb { game_menu_resume( menu ); });
 			game_menu_item( menu, "Options", x, y + 20, game_menu_cb { game_menu_push( menu, game_menu_page_options ); });
-			game_menu_item( menu, "Credits", x, y + 40, game_menu_cb { game_menu_push( menu, game_menu_page_credits ); });
-			game_menu_item( menu, "Exit",    x, y + 60, game_menu_cb { /* todo */ void game_start(); game_start();     });
+			game_menu_item( menu, "Credits", x, y + 40, game_menu_cb { game_menu_push( menu, game_menu_page_packs ); });
+			game_menu_item( menu, "Exit",    x, y + 60, game_menu_cb { /* todo */ void game_start(); game_start(); });
 			game_menu_item( menu, "Respawn", x, y - 90, game_menu_cb { game_menu_respawn( menu ); });
 			game_menu_item( menu, pause,     x, y - 70, game_menu_cb { game.is_paused = ! game.is_paused; menu_did_back = true; if ( game.is_paused ) menu_sfx_start(); else menu_sfx_start(); });
-
-			break;
-		}
+		} break;
 	}
 
 	[&](){
