@@ -28,8 +28,6 @@ void game_draw_init() {
 	game_draw_vignette_init();
 }
 
-//
-
 // sky
 
 void draw_sky() {

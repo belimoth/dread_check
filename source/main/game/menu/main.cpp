@@ -21,7 +21,20 @@ void game_menu_main_begin( game_menu &menu ) {
 	menu_did_back = false;
 }
 
+bool app_options_check( string flag );
+
+bool once = true;
+
 void game_menu_main( game_menu &menu, game_menu_signal signal ) {
+	if ( once ) {
+		once = false;
+
+		if ( app_options_check( "continue" ) ) {
+			game_menu_action_start_game_1p( game.menu[0] );
+			chapter_set( chapter_continue );
+		}
+	}
+
 	if ( not menu.state.page ) return;
 
 	menu.signal = signal;
@@ -40,7 +53,7 @@ void game_menu_main( game_menu &menu, game_menu_signal signal ) {
 	switch ( menu.state.page ) {
 		case game_menu_page_start: {
 			game_menu_item_dread_check( menu, "Play",     x +   0, y +  0, 1, game_menu_cb { game_menu_push( menu, game_menu_page_play  ); });
-			game_menu_item_dread_check( menu, "Packs",    x + 190, y + 35, 0, game_menu_cb { game_menu_push( menu, game_menu_page_packs ); });
+			game_menu_item_dread_check( menu, "Files",    x + 190, y + 35, 0, game_menu_cb { game_menu_push( menu, game_menu_page_files ); });
 			game_menu_item_dread_check( menu, "Exit",     x +   0, y + 70, 1, game_menu_cb { app_exit(); });
 			game_menu_item_continue   ( menu,             x +   0, y - 70 );
 			game_menu_item_dread_check( menu, "Options",  x + 190, y - 35, 0, game_menu_cb { game_menu_push( menu, game_menu_page_options ); });
@@ -58,11 +71,11 @@ void game_menu_main( game_menu &menu, game_menu_signal signal ) {
 			// });
 		} break;
 
-		case game_menu_page_maze: {
-			game_menu_item( menu, "START 1P", 216, 146, game_menu_cb { game_menu_action_start_maze_1p( menu ); });
-			game_menu_item( menu, "START 2P", 216, 166, game_menu_cb { game_menu_action_start_maze_2p( menu ); });
-			game_menu_item_back( menu, x + 8, 4 );
-		} break;
+		// case game_menu_page_maze: {
+		// 	game_menu_item( menu, "START 1P", 216, 146, game_menu_cb { game_menu_action_start_maze_1p( menu ); });
+		// 	game_menu_item( menu, "START 2P", 216, 166, game_menu_cb { game_menu_action_start_maze_2p( menu ); });
+		// 	game_menu_item_back( menu, x + 8, 4 );
+		// } break;
 
 		case game_menu_page_play: {
 			game_menu_item( menu, "1 Player", x, y +  0, game_menu_cb { local_player_count = 1; game_menu_push( menu, game_menu_page_play_mode ); });
@@ -95,7 +108,6 @@ void game_menu_main( game_menu &menu, game_menu_signal signal ) {
 
 			game_menu_item_back  ( menu, x,  0 );
 			game_menu_item_status( menu, x, 20 );
-
 		} break;
 
 		case game_menu_page_play_action_channel: {
@@ -145,9 +157,9 @@ void game_menu_main( game_menu &menu, game_menu_signal signal ) {
 					// case 0: text = names[ roster[ menu_roster_hover_i ].name_i ];                           break;
 					// case 1: sprintf( temp, "%i cm", roster[ menu_roster_hover_i ].height    ); text = temp; break;
 					// case 2: sprintf( temp, "%i kg", roster[ menu_roster_hover_i ].weight    ); text = temp; break;
-					// case 3: text = field_primary  [ roster[ menu_roster_hover_i ].primary   ]; break;
-					// case 4: text = field_secondary[ roster[ menu_roster_hover_i ].secondary ]; break;
-					// case 5: text = field_equipment[ roster[ menu_roster_hover_i ].equipment ]; break;
+					// case 3: text = field_primary  [ roster[ menu_roster_hover_i ].primary   ];              break;
+					// case 4: text = field_secondary[ roster[ menu_roster_hover_i ].secondary ];              break;
+					// case 5: text = field_equipment[ roster[ menu_roster_hover_i ].equipment ];              break;
 					// case 6: sprintf( temp, "$%i",   roster[ menu_roster_hover_i ].cash      ); text = temp; break;
 				}
 
@@ -416,7 +428,7 @@ void game_menu_main( game_menu &menu, game_menu_signal signal ) {
 			game_menu_item( menu, "Next", x + 320 - app_graphics_text_measure( "Next" ), 220, game_menu_cb { credits_page_i++; });
 		} break;
 
-		case game_menu_page_packs: {
+		case game_menu_page_files: {
 			zed_canvas_fill( canvas_x1, 0xF7E557 );
 
 			game_menu_item_back( menu, x, 0 );
@@ -427,7 +439,7 @@ void game_menu_main( game_menu &menu, game_menu_signal signal ) {
 			string pause = game.is_paused ? "Unpause" : "Pause";
 			game_menu_item( menu, "Resume",  x, y +  0, game_menu_cb { game_menu_resume( menu ); });
 			game_menu_item( menu, "Options", x, y + 20, game_menu_cb { game_menu_push( menu, game_menu_page_options ); });
-			game_menu_item( menu, "Credits", x, y + 40, game_menu_cb { game_menu_push( menu, game_menu_page_packs ); });
+			game_menu_item( menu, "Files",   x, y + 40, game_menu_cb { game_menu_push( menu, game_menu_page_files ); });
 			game_menu_item( menu, "Exit",    x, y + 60, game_menu_cb { /* todo */ void game_start(); game_start(); });
 			game_menu_item( menu, "Respawn", x, y - 90, game_menu_cb { game_menu_respawn( menu ); });
 			game_menu_item( menu, pause,     x, y - 70, game_menu_cb { game.is_paused = ! game.is_paused; menu_did_back = true; if ( game.is_paused ) menu_sfx_start(); else menu_sfx_start(); });

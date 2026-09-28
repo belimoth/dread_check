@@ -118,6 +118,12 @@ void main_draw() {
 
 		game_canvas_after();
 		app_ui_draw();
+
+		if ( clay.page == clay_page_menu_play ) {
+			// todo render only safe area
+			void game_canvas_pip( float x, float y );
+			game_canvas_pip( 117, 99 );
+		}
 	} else {
 		game_canvas_before();
 		game_draw();

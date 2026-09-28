@@ -59,7 +59,7 @@ void draw_title() {
 	if ( chapter_current == chapter_none ) {
 		if ( game.menu[0].state.page >= game_menu_page_options and game.menu[0].state.page <= game_menu_page_options_max ) {
 			zed_canvas_fill( canvas_x1, 0xBB007E );
-		} else if ( game.menu[0].state.page == game_menu_page_packs ) {
+		} else if ( game.menu[0].state.page == game_menu_page_files ) {
 			zed_canvas_fill( canvas_x1, 0xBB007E );
 		} else {
 			zed_canvas_fill( canvas_x1, 0xF7E557 );
@@ -110,6 +110,8 @@ void draw_title() {
 		draw_title_draugb();
 	}
 }
+
+// note unused
 
 void draw_title_maze() {
 	zed_canvas_fill( canvas_x1, color_maze_menu_bg );
@@ -195,24 +197,12 @@ void game_menu_draw( game_menu &menu ) {
 	zed_clear_stencil();
 
 	switch ( menu.state.page ) {
-		game_menu_page_none:
+		case game_menu_page_none:
+		case game_menu_page_pause:
 		return;
 
-		case game_menu_page_start:
-		case game_menu_page_play:
-		case game_menu_page_options:
-		case game_menu_page_options_input:
-		case game_menu_page_options_input_singleplayer:
-		case game_menu_page_options_input_multiplayer:
-		case game_menu_page_options_video:
-		case game_menu_page_options_audio:
-		case game_menu_page_options_data:
-		case game_menu_page_pause:
+		default:
 		draw_title();
-		break;
-
-		case game_menu_page_maze:
-		draw_title_maze();
 		break;
 	}
 

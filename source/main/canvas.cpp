@@ -6,6 +6,7 @@
 #include "game/draw.h"
 
 zed_pass pass_canvas;
+zed_pass pass_pip;
 
 void game_canvas_size() {
 	// int resolution =  30;
@@ -33,6 +34,7 @@ void game_canvas_init() {
 	zed_canvas_new( canvas_x1, canvas_size.x,     canvas_size.y     );
 	zed_canvas_new( canvas_x2, canvas_size.x * 2, canvas_size.y * 2 );
 	zed_pass_new( pass_canvas, "data/shader/zed/canvas.hlsl" );
+	zed_pass_new( pass_pip, "data/shader/zed/pip.hlsl" );
 }
 
 //
@@ -135,6 +137,21 @@ void game_canvas_after() {
 	zed_set_render_target( app.graphics.render_target );
 	zed_pass_reset( pass_canvas );
 	_canvas_set_viewport();
+	zed_use_canvas_3d( canvas );
+	zed_mesh_draw_primitive( zed_primitive_triangle_list, 3 );
+}
+
+void game_canvas_pip( float x, float y ) {
+	zed_canvas canvas = canvas_x1;
+
+	//
+
+	zed_set_render_target( app.graphics.render_target );
+	zed_pass_reset( pass_pip );
+	zed_set_viewport( x, y, 320, 240 );
+
+	//
+
 	zed_use_canvas_3d( canvas );
 	zed_mesh_draw_primitive( zed_primitive_triangle_list, 3 );
 }

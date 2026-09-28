@@ -6,7 +6,7 @@ enum game_chapter {
 };
 
 int chapter_current  = chapter_none;
-int chapter_continue = chapter_none;
+int chapter_continue = chapter_max;
 
 void chapter_set( int chapter_new ) {
 	if ( chapter_new == chapter_current ) return;

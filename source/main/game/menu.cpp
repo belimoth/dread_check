@@ -55,10 +55,9 @@ void hud_on_e( game_menu &menu ) {
 
 void hud_on_start( game_menu &menu ) {
 	switch ( menu.state.page ) {
-		case game_menu_page_maze : game_menu_action_start_maze_1p( menu );      break;
 		case game_menu_page_pause: menu.state.page = game_menu_page_none;       break;
 		case game_menu_page_start: game_menu_push( menu, game_menu_page_play ); break;
-		case game_menu_page_play : game_menu_action_start_game_1p( menu );      break;
+		case game_menu_page_play:  game_menu_action_start_game_1p( menu );      break;
 	}
 }
 
@@ -125,7 +124,6 @@ void game_menu_update_0() {
 		if ( app_input.get.key_d.fall                   ) hud_on_e         ( game.menu[0] );
 		if ( app_input.get.key_right.fall               ) hud_on_e         ( game.menu[0] );
 	}
-
 
 	hud_ps_previous = hud_ps;
 }

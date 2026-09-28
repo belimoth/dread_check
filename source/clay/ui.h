@@ -31,12 +31,12 @@ void clay_ui_draw_border() {
 void clay_ui_draw_button() {
 	ui_element_step_node *self = ui.data.step_nodes + ui.id_current;
 	ui_element_step_node *parent = ui.data.step_nodes + self->id_parent;
-	ui_element_data *parent_data   = (ui_element_data *)parent->data;
+	ui_element_data *parent_data = (ui_element_data *)parent->data;
 
 	float x = self->position.x;
 	float y = self->position.y;
-	float w = self->size    .x;
-	float h = self->size    .y;
+	float w = self->size.x;
+	float h = self->size.y;
 
 	uint color_el = color_clay_bg;
 
@@ -60,7 +60,7 @@ void clay_ui_text( string text, uint color ) {
 
 	// todo
 	float line_height = 32;
-	float padding = ( self->size.y - line_height ) / 2;
+	float padding = ( self->size.y - line_height ) / 2 + 4;
 	float2 position = self->child_position;
 
 	position.y += padding;
@@ -72,7 +72,16 @@ void el_header( string text ) {
 	el_start;
 	el_block;
 	ui_element_set_size_y( 96 );
-	ui_element_set_padding( 16, 0 );
+	el_pad( 16, 0 );
+	clay_ui_text( text, color_clay_fg );
+	ui_element_finish( id, text );
+}
+
+void el_label( string text ) {
+	el_start;
+	el_block;
+	ui_element_set_size_y( 32 );
+	el_pad( 16, 0 );
 	clay_ui_text( text, color_clay_fg );
 	ui_element_finish( id, text );
 }

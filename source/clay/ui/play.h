@@ -61,19 +61,20 @@ void ui_element_set_size_x( int x ) {
 	self.size.x = x;
 }
 
+
 void el_game_interior() {
 	el_start;
 	ui_element_set_size_x( 320 );
 	ui_element_set_size_y( 240 );
-	clay_ui_draw_fill();
+	// clay_ui_draw_fill();
 	el_finish;
 }
 
 void el_game() {
 	el_start;
 	el_block;
-	ui_element_set_size_x( 480 );
-	ui_element_set_size_y( 240 );
+	ui_element_set_size_x( 324 );
+	ui_element_set_size_y( 244 );
 
 	clay_ui_draw_border();
 	ui_element_set_padding( 2 );
@@ -90,11 +91,12 @@ void el_play() {
 	el_start;
 	el_block;
 	ui_element_set_padding( 16, 0 );
+	ui_element_set_size_x( 324 );
+	ui_element_set_size_y( 244 );
 
 	el_game();
 
 	el_finish;
-
 }
 
 void el_column_play() {
@@ -105,6 +107,10 @@ void el_column_play() {
 
 	el_header( "PLAY" );
 	el_play();
+	el_label( "Game: dread_check.exe" );
+	el_label( "Origin: Local" );
+	el_label( "Edition: Alpha" );
+	el_label( "Version: ############" );
 
 	el_finish;
 }

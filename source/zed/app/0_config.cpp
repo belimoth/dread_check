@@ -7,14 +7,18 @@
 #include <argh.h>
 #pragma warning( pop )
 
-void app_options_init() {
-	argh::parser parser( __argv );
+argh::parser parser( __argv );
 
-	app.options.debug    = parser[{ "--debug"    }];
-	app.options.headless = parser[{ "--headless" }];
+void app_options_init() {
+	app.options.debug    = parser[{ "debug"    }];
+	app.options.headless = parser[{ "headless" }];
 
 	// note --headless implies --debug
 	app.options.debug |= app.options.headless;
+}
+
+bool app_options_check( string flag ) {
+	return parser[{ flag }];
 }
 
 void app_config_init_default() {

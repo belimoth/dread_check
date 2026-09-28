@@ -100,7 +100,7 @@ void game_menu_resume( game_menu &menu ) {
 }
 
 void game_menu_action_back( game_menu &menu ) {
-	if ( menu.state.page == game_menu_page_maze  ) { void scene_game_start(); scene_game_start(); game.scene = scene_game; }
+	// if ( menu.state.page == game_menu_page_maze  ) { void scene_game_start(); scene_game_start(); game.scene = scene_game; }
 	if ( menu.state.page == game_menu_page_start ) return;
 	if ( menu.state.page == game_menu_page_pause ) { game_menu_resume( menu ); return; }
 	if ( menu.i == 0 ) return;

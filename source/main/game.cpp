@@ -43,7 +43,7 @@ void scene_game_start() {
 		game_player &player = game.data.player[i];
 		player.torso = torso_hip;
 		player.hands = {};
-		player.hands.j = 3;
+		player.hands.j = 2;
 		player.hands.item[ player.hands.item_i++ ].type = item_type[ item_none             ];
 		player.hands.item[ player.hands.item_i++ ].type = item_type[ item_wi_1897_shotgun  ];
 		player.hands.item[ player.hands.item_i++ ].type = item_type[ item_ak_1947          ];
@@ -74,6 +74,7 @@ void game_start() {
 	game.player_count = 1;
 	split = game_split_solo;
 	game.menu[0].state = { game_menu_page_start };
+
 	game.scene = scene_game;
 	scene_game_start();
 }

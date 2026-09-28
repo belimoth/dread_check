@@ -34,10 +34,8 @@ enum game_menu_page {
 	game_menu_page_options_max,
 
 	game_menu_page_credits,
-	game_menu_page_packs,
+	game_menu_page_files,
 	game_menu_page_pause,
-
-	game_menu_page_maze,
 };
 
 struct game_menu_state {

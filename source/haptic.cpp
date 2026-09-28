@@ -46,12 +46,10 @@ void haptic_step() {
 		game.data.player[0].pad.gyro = float3( input.gyroscope.x, input.gyroscope.y, input.gyroscope.z );
 	}
 
-
 	DS5W::DS5OutputState output = {};
 
 	// output.leftRumble  = input.leftTrigger;
 	// output.rightRumble = input.rightTrigger;
-
 
 	// /*
 
