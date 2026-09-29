@@ -400,7 +400,7 @@ void game_menu_main( game_menu &menu, game_menu_signal signal ) {
 			sprintf( text, "User:  %s",   app .user  ); game_menu_label( menu, text, x, y +  0 );
 			sprintf( text, "Itch:  %s",   itch.user  ); game_menu_label( menu, text, x, y + 20 );
 			sprintf( text, "Steam: %s",   steam_user ); game_menu_label( menu, text, x, y + 40 );
-			sprintf( text, "Seed:  %08X", game.seed  ); game_menu_label( menu, text, x, y + 40 );
+			sprintf( text, "Seed:  %08X", game.seed  ); game_menu_label( menu, text, x, y + 60 );
 
 			game_menu_item_back( menu, x,  0 );
 		} break;
