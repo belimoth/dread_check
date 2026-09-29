@@ -193,32 +193,32 @@ void game_player_stance_spin_left( game_player &player ) {
 }
 
 void game_player_stance_b_step( game_player &player ) {
-	if ( not player.pad.b and player.pad_previous.b ) {
+	if ( player.pad.b.rise ) {
 		if ( game_player_stance_can_jump( player ) and not player.b_menu_handled ) game_player_stance_hide( player );
 		player.b_menu_handled = false;
 		player.hint = hint_none;
 	}
 
 	if ( player.stance == stance_reach ) {
-		if ( player.pad.joy_0.magnitude != 0 and not player.pad.b ) {
+		if ( player.pad.joy_0.magnitude != 0 and not player.pad.b.held ) {
 			player.stance = stance_walk;
 			game_player_hands_unholster( player );
 		}
 	}
 
-	if ( player.pad.b ) {
-		if ( not player.pad_previous.b ) player.hint = hint_b_menu;
+	if ( player.pad.b.held) {
+		if ( player.pad.b.fall ) player.hint = hint_b_menu;
 
-		if ( player.pad.joy_1.z > 0 or player.pad.n and not player.pad_previous.n ) {
+		if ( player.pad.joy_1.z > 0 or player.pad.n.fall ) {
 			player.b_menu_handled = true;
 			game_player_stance_hide_raise( player );
 		}
 
-		if ( player.pad.joy_1.z < 0 or player.pad.s and not player.pad_previous.s ) {
+		if ( player.pad.joy_1.z < 0 or player.pad.s.fall ) {
 			game_player_stance_hide_lower( player );
 		}
 
-		if ( player.pad.w and not player.pad_previous.w ) game_player_stance_spin_left ( player );
-		if ( player.pad.e and not player.pad_previous.e ) game_player_stance_spin_right( player );
+		if ( player.pad.w.fall ) game_player_stance_spin_left ( player );
+		if ( player.pad.e.fall ) game_player_stance_spin_right( player );
 	}
 }

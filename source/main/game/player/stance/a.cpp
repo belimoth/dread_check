@@ -97,7 +97,7 @@ void game_player_stance_dive( game_player &player, game_player_stance stance ) {
 }
 
 void game_player_stance_a_step( game_player &player ) {
-	if ( not player.pad.a and player.pad_previous.a ) {
+	if ( player.pad.a.rise ) {
 		if ( game_player_stance_can_jump( player ) and not player.a_menu_handled ) {
 			game_player_stance_jump( player );
 		} else {
@@ -117,25 +117,25 @@ void game_player_stance_a_step( game_player &player ) {
 		player.a_menu_handled = false;
 	}
 
-	if ( player.pad.a ) {
-		if ( not player.pad_previous.a ) player.hint = hint_a_menu;
+	if ( player.pad.a.held ) {
+		if ( player.pad.a.fall ) player.hint = hint_a_menu;
 
-		if ( player.pad.joy_1.z > 0 or player.pad.n and not player.pad_previous.n ) {
+		if ( player.pad.joy_1.z > 0 or player.pad.n.fall ) {
 			player.a_menu_handled = true;
 			game_player_stance_dive( player, stance_dive_prone );
 		}
 
-		if ( player.pad.joy_1.z < 0 or player.pad.s and not player.pad_previous.s ) {
+		if ( player.pad.joy_1.z < 0 or player.pad.s.fall ) {
 			player.a_menu_handled = true;
 			game_player_stance_dive( player, stance_dive_supine );
 		}
 
-		if ( player.pad.w and not player.pad_previous.w ) {
+		if ( player.pad.w.fall ) {
 			player.a_menu_handled = true;
 			game_player_stance_dive( player, stance_dive_left );
 		}
 
-		if ( player.pad.e and not player.pad_previous.e ) {
+		if ( player.pad.e.fall ) {
 			player.a_menu_handled = true;
 			game_player_stance_dive( player, stance_dive_right );
 		}

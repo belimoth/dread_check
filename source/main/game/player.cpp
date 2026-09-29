@@ -75,7 +75,7 @@ void game_player_navigation_step( game_player &player ) {
 		player.object.position.y += dy;
 		player.rig.posture -= dy / ( height_stand - height_crouch );
 
-		if ( player.pad.b ) {
+		if ( player.pad.b.held ) {
 			game_player_stance stance_previous = player.stance;
 			if ( player.rig.posture <  1.0 + 0.25 ) player.stance = stance_walk;
 			if ( player.rig.posture <  0.5 + 0.25 ) player.stance = stance_stalk;

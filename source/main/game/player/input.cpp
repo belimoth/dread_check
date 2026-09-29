@@ -3,11 +3,12 @@
 
 void menu_sfx_hover();
 
-void game_menu_update_0();
-void game_menu_update_1();
-zed_pad update_pad_0_keyboard_only();
-zed_pad update_pad_0();
-zed_pad update_pad_i( int i );
+void game_menu_step_0();
+void game_menu_step_1();
+
+zed_pad pad_step_0_keyboard_only( zed_pad );
+zed_pad pad_step_0( zed_pad );
+zed_pad pad_step_i( int i, zed_pad );
 
 // todo
 
@@ -19,20 +20,20 @@ void client_update_player_i( int i ) {
 
 	if ( i == 0 ) {
 		if ( split == game_split_solo ) {
-			player.pad = update_pad_0();
+			player.pad = pad_step_0( player.pad_previous );
 		} else {
-			player.pad = update_pad_0_keyboard_only();
+			player.pad = pad_step_0_keyboard_only( player.pad_previous );
 		}
 	} else {
 		if ( split == game_split_solo ) return;
-		game.data.player[i].pad = update_pad_i(i);
+		player.pad = pad_step_i( i, player.pad_previous );
 	}
 
 	//
 
 	bool pass = false;
-	if ( player.pad.a and not player.a_menu_handled ) pass = true;
-	if ( player.pad.b and not player.b_menu_handled ) pass = true;
+	if ( player.pad.a.held and not player.a_menu_handled ) pass = true;
+	if ( player.pad.b.held and not player.b_menu_handled ) pass = true;
 
 	switch ( player.stance ) {
 		case stance_jog:
@@ -47,7 +48,7 @@ void client_update_player_i( int i ) {
 
 	//
 
-	if ( not player.pad.start and player.pad_previous.start ) {
+	if ( player.pad.start.rise ) {
 		game.menu[i].state = { game_menu_page_pause };
 		menu_sfx_hover();
 	}
@@ -64,11 +65,37 @@ void client_update_player() {
 	if ( not game.has_focus ) return;
 
 	for ( int i = 0; i < game.player_count; i++ ) client_update_player_i( i );
-	if ( game.menu[0].state.page ) game_menu_update_0();
-	if ( game.menu[1].state.page ) game_menu_update_1();
+	if ( game.menu[0].state.page ) game_menu_step_0();
+	if ( game.menu[1].state.page ) game_menu_step_1();
 }
 
-void game_player_input_step( game_player &player ) {
+void game_player_input_step_lb_rb( game_player &player ) {
+	switch ( player.torso ) {
+		case torso_throw:
+		if ( player.pad.rb.fall and not player.pad.lb.held ) player.torso = torso_hip;
+		if ( player.pad.rb.fall and     player.pad.lb.held ) player.torso = torso_aim;
+		break;
+
+		case torso_hip:
+		if ( not player.pad.rb.held and not player.pad.lb.held ) player.torso = torso_throw;
+		if (     player.pad.rb.held and     player.pad.lb.held ) player.torso = torso_aim;
+		break;
+
+		case torso_aim:
+		if (     player.pad.rb.held and not player.pad.lb.held ) player.torso = torso_hip;
+		if ( not player.pad.rb.held and     player.pad.lb.held ) player.torso = torso_hold;
+		break;
+
+		case torso_hold:
+		if ( not player.pad.rb.held and not player.pad.lb.held ) player.torso = torso_throw;
+		break;
+
+		default:
+		player.torso = torso_throw;
+	}
+}
+
+void game_player_input_step_lt_rt( game_player &player ) {
 	if ( player.pad.rt == 1 and player.pad_previous.rt != 1 ) {
 		switch ( player.torso ) {
 			case torso_hip:
@@ -133,35 +160,29 @@ void game_player_input_step( game_player &player ) {
 			break;
 		}
 	}
+}
 
-	//
-
-	if ( player.pad.lb and not player.pad.rb and not player.hands.goofy ) player.torso = torso_grab;
-	if ( player.pad.lb and not player.pad.rb and     player.hands.goofy ) player.torso = torso_hold;
-	if ( player.pad.rb and not player.pad.lb and not player.hands.goofy ) player.torso = torso_hold;
-	if ( player.pad.rb and not player.pad.lb and     player.hands.goofy ) player.torso = torso_grab;
-	if ( player.pad.rb and player.pad.lb ) player.torso = torso_throw;
-	if ( not player.pad.rb and not player.pad.lb and ( player.pad_previous.rb or player.pad_previous.lb ) ) player.torso = torso_hip;
-
-	//
-
-	if ( not player.pad.a and not player.pad.b and not player.pad.x and not player.pad.y ) {
+void game_player_input_step_ab_xy( game_player &player ) {
+	if ( not player.pad.a.held and not player.pad.b.held and not player.pad.x.held and not player.pad.y.held ) {
 		if ( player.pad.joy_1.z > 0 ) game_player_hands_switch_primary_up( player );
 		if ( player.pad.joy_1.z < 0 ) game_player_hands_switch_primary_down( player );
 
 		// todo, toggle in-game music and chat
-		// if ( player.pad.n and not player.pad_previous.n ) game_player_hands_switch_primary( player, 0 );
+		// if ( player.pad.n.fall ) game_player_hands_switch_primary( player, 0 );
 
-		if ( player.pad.s and not player.pad_previous.s ) {
+		if ( player.pad.s.fall ) {
 			game_player_hands_switch_primary( player, 0 );
 			player.hint = hint_none;
 		}
 
-		if ( player.pad.e and not player.pad_previous.e ) game_player_hands_switch_primary_up  ( player );
-		if ( player.pad.w and not player.pad_previous.w ) game_player_hands_switch_primary_down( player );
+		if ( player.pad.e.fall ) game_player_hands_switch_primary_up  ( player );
+		if ( player.pad.w.fall ) game_player_hands_switch_primary_down( player );
 	}
+}
 
-	//
-
+void game_player_input_step( game_player &player ) {
+	game_player_input_step_lt_rt( player );
+	game_player_input_step_lb_rb( player );
+	game_player_input_step_ab_xy( player );
 	player.pad_previous = player.pad;
 }

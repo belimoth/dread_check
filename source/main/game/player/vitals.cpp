@@ -41,7 +41,7 @@ void game_player_vitals_step( game_player &player ) {
 		}
 	}
 
-	if ( player.pad.joy_0.magnitude < 0.2 and player.pad.ls ) {
+	if ( player.pad.joy_0.magnitude < 0.2 and player.pad.ls.held ) {
 		player.vitals.exertn += cost_breath;
 	}
 

@@ -1,31 +1,31 @@
 #include "../../player.h"
 
 void game_player_stance_x_step( game_player &player ) {
-	if ( not player.pad.x and player.pad_previous.x ) {
+	if ( player.pad.x.rise ) {
 		if ( not player.x_menu_handled ) if ( player.ammo_i == 0 or player.bag.ammo[ player.ammo_i ] != 0 ) game_item_try( player, action_reload );
 		player.x_menu_handled = false;
 		player.hint = hint_none;
 	}
 
-	if ( player.pad.x ) {
-		if ( not player.pad_previous.x ) player.hint = hint_x_menu;
+	if ( player.pad.x.held ) {
+		if ( player.pad.x.fall ) player.hint = hint_x_menu;
 
-		if ( player.pad.joy_1.z > 0 or player.pad.n and not player.pad_previous.n ) {
+		if ( player.pad.joy_1.z > 0 or player.pad.n.fall ) {
 			player.x_menu_handled = true;
 			// todo
 		}
 
-		if ( player.pad.joy_1.z < 0 or player.pad.s and not player.pad_previous.s ) {
+		if ( player.pad.joy_1.z < 0 or player.pad.s.fall ) {
 			player.x_menu_handled = true;
 			// todo
 		}
 
-		if ( player.pad.w and not player.pad_previous.w ) {
+		if ( player.pad.w.fall ) {
 			player.x_menu_handled = true;
 			// todo
 		}
 
-		if ( player.pad.e and not player.pad_previous.e ) {
+		if ( player.pad.e.fall ) {
 			player.x_menu_handled = true;
 			// todo
 		}

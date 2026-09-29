@@ -12,16 +12,16 @@ struct zed_pad {
 	zed_joy joy_0;
 	zed_joy joy_1;
 
-	bool a, b, x, y;
-	bool n, e, s, w;
-	bool ls, rs;
-	bool lb, rb;
+	app_input_key_state a, b, x, y;
+	app_input_key_state n, e, s, w;
+	app_input_key_state ls, rs;
+	app_input_key_state lb, rb;
 	float lt, rt;
 
-	bool start, back;
+	app_input_key_state start, back;
 
 	float3 gyro;
 };
 
-zed_pad update_pad();
-zed_pad update_pad_0();
+zed_pad pad_step( zed_pad );
+zed_pad pad_step_0( zed_pad );

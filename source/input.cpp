@@ -124,32 +124,67 @@ bool has_pad_2() {
 	return true;
 }
 
-zed_pad update_pad_0_keyboard_only() {
+zed_pad pad_step_after( zed_pad pad, zed_pad pad_previous ) {
+	pad.a    .fall = pad.a    .held and not pad_previous.a    .held;
+	pad.b    .fall = pad.b    .held and not pad_previous.b    .held;
+	pad.x    .fall = pad.x    .held and not pad_previous.x    .held;
+	pad.y    .fall = pad.y    .held and not pad_previous.y    .held;
+	pad.rb   .fall = pad.rb   .held and not pad_previous.rb   .held;
+	pad.lb   .fall = pad.lb   .held and not pad_previous.lb   .held;
+	pad.rs   .fall = pad.rs   .held and not pad_previous.rs   .held;
+	pad.ls   .fall = pad.ls   .held and not pad_previous.ls   .held;
+	pad.n    .fall = pad.n    .held and not pad_previous.n    .held;
+	pad.e    .fall = pad.e    .held and not pad_previous.e    .held;
+	pad.s    .fall = pad.s    .held and not pad_previous.s    .held;
+	pad.w    .fall = pad.w    .held and not pad_previous.w    .held;
+	pad.start.fall = pad.start.held and not pad_previous.start.held;
+	pad.back .fall = pad.back .held and not pad_previous.back .held;
+
+	pad.a    .rise = not pad.a    .held and pad_previous.a    .held;
+	pad.b    .rise = not pad.b    .held and pad_previous.b    .held;
+	pad.x    .rise = not pad.x    .held and pad_previous.x    .held;
+	pad.y    .rise = not pad.y    .held and pad_previous.y    .held;
+	pad.rb   .rise = not pad.rb   .held and pad_previous.rb   .held;
+	pad.lb   .rise = not pad.lb   .held and pad_previous.lb   .held;
+	pad.rs   .rise = not pad.rs   .held and pad_previous.rs   .held;
+	pad.ls   .rise = not pad.ls   .held and pad_previous.ls   .held;
+	pad.n    .rise = not pad.n    .held and pad_previous.n    .held;
+	pad.e    .rise = not pad.e    .held and pad_previous.e    .held;
+	pad.s    .rise = not pad.s    .held and pad_previous.s    .held;
+	pad.w    .rise = not pad.w    .held and pad_previous.w    .held;
+	pad.start.rise = not pad.start.held and pad_previous.start.held;
+	pad.back .rise = not pad.back .held and pad_previous.back .held;
+
+	return pad;
+}
+
+zed_pad pad_step_0_keyboard_only( zed_pad pad_previous ) {
 	zed_pad pad = {};
 
 	pad.joy_0 = get_joy_via_keyboard();
 	pad.joy_1 = get_joy_via_mouse();
 
-	if ( app_input.get.key_mouse_r.held ) pad.lt    = 1;
-	if ( app_input.get.key_mouse_l.held ) pad.rt    = 1;
-	if ( app_input.get.key_space  .held ) pad.a     = 1;
-	if ( app_input.get.key_control.held ) pad.b     = 1;
-	if ( app_input.get.key_r      .held ) pad.x     = 1;
-	if ( app_input.get.key_tab    .held ) pad.y     = 1;
-	if ( app_input.get.key_e      .held ) pad.rb    = 1;
-	if ( app_input.get.key_q      .held ) pad.lb    = 1;
-	if ( app_input.get.key_f      .held ) pad.rs    = 1;
-	if ( app_input.get.key_mouse_m.held ) pad.rs    = 1;
-	if ( app_input.get.key_shift  .held ) pad.ls    = 1;
-	if ( app_input.get.key_mouse_x.held ) pad.e     = 1;
-	if ( app_input.get.key_mouse_y.held ) pad.w     = 1;
-	if ( app_input.get.key_return.held  ) pad.start = 1;
-	if ( app_input.get.key_back.held    ) pad.back  = 1;
+	if ( app_input.get.key_mouse_r.held ) pad.lt = 1;
+	if ( app_input.get.key_mouse_l.held ) pad.rt = 1;
+
+	pad.a     = app_input.get.key_space;
+	pad.b     = app_input.get.key_control;
+	pad.x     = app_input.get.key_r;
+	pad.y     = app_input.get.key_tab;
+	pad.rb    = app_input.get.key_e;
+	pad.lb    = app_input.get.key_q;
+	pad.rs    = app_input.get.key_f;
+	pad.rs    = app_input.get.key_mouse_m;
+	pad.ls    = app_input.get.key_shift;
+	pad.e     = app_input.get.key_mouse_x;
+	pad.w     = app_input.get.key_mouse_y;
+	pad.start = app_input.get.key_return;
+	pad.back  = app_input.get.key_back;
 
 	return pad;
 }
 
-zed_pad update_pad_0() {
+zed_pad pad_step_0( zed_pad pad_previous ) {
 	XINPUT_STATE pad_state;
 	uint result = xinput_get_state( 0, &pad_state );
 
@@ -176,17 +211,17 @@ zed_pad update_pad_0() {
 	if ( result or use_keyboard ) {
 		pad.joy_0 = joy;
 
-		if ( app_input.get.key_space  .held ) pad.a     = 1;
-		if ( app_input.get.key_control.held ) pad.b     = 1;
-		if ( app_input.get.key_c      .held ) pad.b     = 1;
-		if ( app_input.get.key_r      .held ) pad.x     = 1;
-		if ( app_input.get.key_tab    .held ) pad.y     = 1;
-		if ( app_input.get.key_e      .held ) pad.rb    = 1;
-		if ( app_input.get.key_q      .held ) pad.lb    = 1;
-		if ( app_input.get.key_f      .held ) pad.rs    = 1;
-		if ( app_input.get.key_shift  .held ) pad.ls    = 1;
-		if ( app_input.get.key_return .held ) pad.start = 1;
-		if ( app_input.get.key_back   .held ) pad.back  = 1;
+		pad.a     = app_input.get.key_space;
+		pad.b     = app_input.get.key_control;
+		pad.b     = app_input.get.key_c;
+		pad.x     = app_input.get.key_r;
+		pad.y     = app_input.get.key_tab;
+		pad.rb    = app_input.get.key_e;
+		pad.lb    = app_input.get.key_q;
+		pad.rs    = app_input.get.key_f;
+		pad.ls    = app_input.get.key_shift;
+		pad.start = app_input.get.key_return;
+		pad.back  = app_input.get.key_back;
 
 		if ( false and use_mouse ) {
 			if ( app_input.get.key_1.held ) game_player_hands_switch_primary( game.data.player[0], 0 );
@@ -194,10 +229,10 @@ zed_pad update_pad_0() {
 			if ( app_input.get.key_3.held ) game_player_hands_switch_primary( game.data.player[0], 2 );
 			if ( app_input.get.key_4.held ) game_player_hands_switch_primary( game.data.player[0], 3 );
 		} else {
-			if ( app_input.get.key_1.held ) pad.n = 1;
-			if ( app_input.get.key_2.held ) pad.e = 1;
-			if ( app_input.get.key_3.held ) pad.s = 1;
-			if ( app_input.get.key_4.held ) pad.w = 1;
+			pad.n = app_input.get.key_1;
+			pad.e = app_input.get.key_2;
+			pad.s = app_input.get.key_3;
+			pad.w = app_input.get.key_4;
 		}
 
 		if ( app_input.get.key_5.held ) game_player_hands_switch_secondary( game.data.player[0], 0 );
@@ -210,15 +245,15 @@ zed_pad update_pad_0() {
 	if ( result or use_mouse ) {
 		pad.joy_1 = get_joy_via_mouse();
 
-		if ( app_input.get.key_mouse_r.held ) pad.lt    = 1;
-		if ( app_input.get.key_mouse_l.held ) pad.rt    = 1;
+		if ( app_input.get.key_mouse_r.held ) pad.lt = 1;
+		if ( app_input.get.key_mouse_l.held ) pad.rt = 1;
 
-		if ( app_input.get.key_mouse_m.held ) pad.rs    = 1;
-		if ( app_input.get.key_mouse_x.held ) pad.e     = 1;
-		if ( app_input.get.key_mouse_y.held ) pad.w     = 1;
+		pad.rs = app_input.get.key_mouse_m;
+		pad.e  = app_input.get.key_mouse_x;
+		pad.w  = app_input.get.key_mouse_y;
 	}
 
-	if ( result ) return pad;
+	if ( result ) return pad_step_after( pad, pad_previous );
 
 	joy = get_joy( pad_state.Gamepad.sThumbLX, pad_state.Gamepad.sThumbLY );
 	if ( not joy.magnitude == 0 ) use_keyboard = false;
@@ -236,39 +271,41 @@ zed_pad update_pad_0() {
 		pad.rt = pad_state.Gamepad.bRightTrigger / 255.0;
 	}
 
-	pad.a     |= (bool)( pad_state.Gamepad.wButtons & XINPUT_GAMEPAD_A              );
-	pad.b     |= (bool)( pad_state.Gamepad.wButtons & XINPUT_GAMEPAD_B              );
-	pad.x     |= (bool)( pad_state.Gamepad.wButtons & XINPUT_GAMEPAD_X              );
-	pad.y     |= (bool)( pad_state.Gamepad.wButtons & XINPUT_GAMEPAD_Y              );
-	pad.rb    |= (bool)( pad_state.Gamepad.wButtons & XINPUT_GAMEPAD_RIGHT_SHOULDER );
-	pad.lb    |= (bool)( pad_state.Gamepad.wButtons & XINPUT_GAMEPAD_LEFT_SHOULDER  );
-	pad.rs    |= (bool)( pad_state.Gamepad.wButtons & XINPUT_GAMEPAD_RIGHT_THUMB    );
-	pad.ls    |= (bool)( pad_state.Gamepad.wButtons & XINPUT_GAMEPAD_LEFT_THUMB     );
-	pad.n     |= (bool)( pad_state.Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_UP        );
-	pad.e     |= (bool)( pad_state.Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_RIGHT     );
-	pad.s     |= (bool)( pad_state.Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_DOWN      );
-	pad.w     |= (bool)( pad_state.Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_LEFT      );
-	pad.start |= (bool)( pad_state.Gamepad.wButtons & XINPUT_GAMEPAD_START          );
-	pad.back  |= (bool)( pad_state.Gamepad.wButtons & XINPUT_GAMEPAD_BACK           );
+	pad.a    .held |= (bool)( pad_state.Gamepad.wButtons & XINPUT_GAMEPAD_A              );
+	pad.b    .held |= (bool)( pad_state.Gamepad.wButtons & XINPUT_GAMEPAD_B              );
+	pad.x    .held |= (bool)( pad_state.Gamepad.wButtons & XINPUT_GAMEPAD_X              );
+	pad.y    .held |= (bool)( pad_state.Gamepad.wButtons & XINPUT_GAMEPAD_Y              );
+	pad.rb   .held |= (bool)( pad_state.Gamepad.wButtons & XINPUT_GAMEPAD_RIGHT_SHOULDER );
+	pad.lb   .held |= (bool)( pad_state.Gamepad.wButtons & XINPUT_GAMEPAD_LEFT_SHOULDER  );
+	pad.rs   .held |= (bool)( pad_state.Gamepad.wButtons & XINPUT_GAMEPAD_RIGHT_THUMB    );
+	pad.ls   .held |= (bool)( pad_state.Gamepad.wButtons & XINPUT_GAMEPAD_LEFT_THUMB     );
+	pad.n    .held |= (bool)( pad_state.Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_UP        );
+	pad.e    .held |= (bool)( pad_state.Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_RIGHT     );
+	pad.s    .held |= (bool)( pad_state.Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_DOWN      );
+	pad.w    .held |= (bool)( pad_state.Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_LEFT      );
+	pad.start.held |= (bool)( pad_state.Gamepad.wButtons & XINPUT_GAMEPAD_START          );
+	pad.back .held |= (bool)( pad_state.Gamepad.wButtons & XINPUT_GAMEPAD_BACK           );
 
-	if ( pad.a or pad.b or pad.x or pad.y ) use_mouse = false;
+	if ( pad.a.held or pad.b.held or pad.x.held or pad.y.held ) use_mouse = false;
 
 	if ( use_mouse and not game.menu[0].state.page ) {
-		pad.a |= pad.s;
-		pad.b |= pad.e;
-		pad.x |= pad.w;
-		pad.y |= pad.n;
+		pad.a.held |= pad.s.held;
+		pad.b.held |= pad.e.held;
+		pad.x.held |= pad.w.held;
+		pad.y.held |= pad.n.held;
 
-		pad.s = 0;
-        pad.e = 0;
-        pad.w = 0;
-        pad.n = 0;
+		pad.s.held = 0;
+        pad.e.held = 0;
+        pad.w.held = 0;
+        pad.n.held = 0;
 	}
+
+	pad = pad_step_after( pad, pad_previous );
 
 	return pad;
 }
 
-zed_pad update_pad_i( int i ) {
+zed_pad pad_step_i( int i, zed_pad pad_previous ) {
 	XINPUT_STATE pad_state;
 	uint result = xinput_get_state( i - 1, &pad_state );
 	zed_pad pad = {};
@@ -285,20 +322,22 @@ zed_pad update_pad_i( int i ) {
 		pad.rt = pad_state.Gamepad.bRightTrigger / 255.0;
 	}
 
-	pad.a     = pad_state.Gamepad.wButtons & XINPUT_GAMEPAD_A;
-	pad.b     = pad_state.Gamepad.wButtons & XINPUT_GAMEPAD_B;
-	pad.x     = pad_state.Gamepad.wButtons & XINPUT_GAMEPAD_X;
-	pad.y     = pad_state.Gamepad.wButtons & XINPUT_GAMEPAD_Y;
-	pad.rb    = pad_state.Gamepad.wButtons & XINPUT_GAMEPAD_RIGHT_SHOULDER;
-	pad.lb    = pad_state.Gamepad.wButtons & XINPUT_GAMEPAD_LEFT_SHOULDER;
-	pad.rs    = pad_state.Gamepad.wButtons & XINPUT_GAMEPAD_RIGHT_THUMB;
-	pad.ls    = pad_state.Gamepad.wButtons & XINPUT_GAMEPAD_LEFT_THUMB;
-	pad.n     = pad_state.Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_UP;
-	pad.e     = pad_state.Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_RIGHT;
-	pad.s     = pad_state.Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_DOWN;
-	pad.w     = pad_state.Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_LEFT;
-	pad.start = pad_state.Gamepad.wButtons & XINPUT_GAMEPAD_START;
-	pad.back  = pad_state.Gamepad.wButtons & XINPUT_GAMEPAD_BACK;
+	pad.a    .held = (bool)( pad_state.Gamepad.wButtons & XINPUT_GAMEPAD_A              );
+	pad.b    .held = (bool)( pad_state.Gamepad.wButtons & XINPUT_GAMEPAD_B              );
+	pad.x    .held = (bool)( pad_state.Gamepad.wButtons & XINPUT_GAMEPAD_X              );
+	pad.y    .held = (bool)( pad_state.Gamepad.wButtons & XINPUT_GAMEPAD_Y              );
+	pad.rb   .held = (bool)( pad_state.Gamepad.wButtons & XINPUT_GAMEPAD_RIGHT_SHOULDER );
+	pad.lb   .held = (bool)( pad_state.Gamepad.wButtons & XINPUT_GAMEPAD_LEFT_SHOULDER  );
+	pad.rs   .held = (bool)( pad_state.Gamepad.wButtons & XINPUT_GAMEPAD_RIGHT_THUMB    );
+	pad.ls   .held = (bool)( pad_state.Gamepad.wButtons & XINPUT_GAMEPAD_LEFT_THUMB     );
+	pad.n    .held = (bool)( pad_state.Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_UP        );
+	pad.e    .held = (bool)( pad_state.Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_RIGHT     );
+	pad.s    .held = (bool)( pad_state.Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_DOWN      );
+	pad.w    .held = (bool)( pad_state.Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_LEFT      );
+	pad.start.held = (bool)( pad_state.Gamepad.wButtons & XINPUT_GAMEPAD_START          );
+	pad.back .held = (bool)( pad_state.Gamepad.wButtons & XINPUT_GAMEPAD_BACK           );
+
+	pad = pad_step_after( pad, pad_previous );
 
 	return pad;
 }

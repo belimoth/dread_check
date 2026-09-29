@@ -124,6 +124,6 @@ void game_player_stance_skid_step( game_player &player ) {
 
 void game_player_stance_l_step( game_player &player ) {
 	if ( not game_player_stance_can_jump( player ) ) return; // note
-	if ( player.pad.ls and not player.pad_previous.ls ) game_player_stance_sprint( player );
-	// if ( player.pad_previous.ls and not player.pad.ls ) game_player_stance_unsprint( player );
+	if ( player.pad.ls.fall ) game_player_stance_sprint( player );
+	// if ( player.pad.ls.rise ) game_player_stance_unsprint( player );
 }

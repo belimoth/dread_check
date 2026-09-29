@@ -25,7 +25,7 @@ void wolf_player_update_rig() {
 }
 
 void wolf_player_step( game_player &player ) {
-	player.pad = update_pad_0();
+	player.pad = pad_step_0( player.pad_previous );
 
 	{
 		float target_speed = turn_speed_walk;

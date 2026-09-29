@@ -122,7 +122,7 @@ void game_draw_hud() {
 		if ( split == game_split_duo ) hud.x = floor( hud.x / 2 );
 
 		uint color = color_hud_fg;
-		if ( player.pad.w or player.pad.e or player.pad.n or player.pad.s or player.y_menu_handled ) color = color_hud_fg; else color = color_hud_fg_active;
+		if ( player.pad.w.held or player.pad.e.held or player.pad.n.held or player.pad.s.held or player.y_menu_handled ) color = color_hud_fg; else color = color_hud_fg_active;
 
 		switch ( player.hint ) {
 			case hint_a_menu: game_draw_hud_a( player, hud ); break;
@@ -136,10 +136,10 @@ void game_draw_hud() {
 		}
 
 		if ( hud.text   ) hud_text( hud.text,   hud.x, hud.y,      align_center, color );
-		if ( hud.text_n ) hud_text( hud.text_n, hud.x, hud.y - 20, align_center, player.pad.n ? color_hud_fg_active : color_hud_fg );
-		if ( hud.text_s ) hud_text( hud.text_s, hud.x, hud.y + 20, align_center, player.pad.s ? color_hud_fg_active : color_hud_fg );
-		if ( hud.text_w ) hud_text( hud.text_w, hud.x - 70, hud.y, align_center, player.pad.w ? color_hud_fg_active : color_hud_fg );
-		if ( hud.text_e ) hud_text( hud.text_e, hud.x + 70, hud.y, align_center, player.pad.e ? color_hud_fg_active : color_hud_fg );
+		if ( hud.text_n ) hud_text( hud.text_n, hud.x, hud.y - 20, align_center, player.pad.n.held ? color_hud_fg_active : color_hud_fg );
+		if ( hud.text_s ) hud_text( hud.text_s, hud.x, hud.y + 20, align_center, player.pad.s.held ? color_hud_fg_active : color_hud_fg );
+		if ( hud.text_w ) hud_text( hud.text_w, hud.x - 70, hud.y, align_center, player.pad.w.held ? color_hud_fg_active : color_hud_fg );
+		if ( hud.text_e ) hud_text( hud.text_e, hud.x + 70, hud.y, align_center, player.pad.e.held ? color_hud_fg_active : color_hud_fg );
 
 		app_graphics_text_finish();
 	}

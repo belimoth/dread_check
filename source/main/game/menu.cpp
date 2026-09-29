@@ -74,15 +74,15 @@ zed_pad hud_ps_previous;
 zed_pad hud_ps_1;
 zed_pad hud_ps_1_previous;
 
-zed_pad update_pad_0();
-zed_pad update_pad_0_keyboard_only();
-zed_pad update_pad_i( int i );
+zed_pad pad_step_0( zed_pad );
+zed_pad pad_step_0_keyboard_only( zed_pad );
+zed_pad pad_step_i( int i, zed_pad );
 
-void game_menu_update_0() {
+void game_menu_step_0() {
 	if ( split == game_split_solo ) {
-		hud_ps = update_pad_0();
+		hud_ps = pad_step_0( hud_ps_previous );
 	} else {
-		hud_ps = update_pad_0_keyboard_only();
+		hud_ps = pad_step_0_keyboard_only( hud_ps_previous );
 	}
 
 	if ( game.has_mouse ) {
@@ -91,52 +91,52 @@ void game_menu_update_0() {
 
 		game_menu_main( game.menu[0], game_menu_signal_hover );
 
-		if ( not hud_ps.start and hud_ps_previous.start ) game_menu_hide_mouse();
-		if ( not hud_ps.a     and hud_ps_previous.a     ) game_menu_hide_mouse();
-		if ( not hud_ps.b     and hud_ps_previous.b     ) game_menu_hide_mouse();
-		if ( not hud_ps.n     and hud_ps_previous.n     ) game_menu_hide_mouse();
-		if ( not hud_ps.s     and hud_ps_previous.s     ) game_menu_hide_mouse();
-		if ( app_input.get.key_w     .rise              ) game_menu_hide_mouse();
-		if ( app_input.get.key_s     .rise              ) game_menu_hide_mouse();
-		if ( app_input.get.key_up    .rise              ) game_menu_hide_mouse();
-		if ( app_input.get.key_down  .rise              ) game_menu_hide_mouse();
-		if ( app_input.get.key_escape.rise              ) game_menu_hide_mouse();
-		if ( app_input.get.key_space .rise              ) game_menu_hide_mouse();
-		if ( app_input.get.key_back  .rise              ) game_menu_hide_mouse();
+		if ( hud_ps.start.rise ) game_menu_hide_mouse();
+		if ( hud_ps.a.rise     ) game_menu_hide_mouse();
+		if ( hud_ps.b.rise     ) game_menu_hide_mouse();
+		if ( hud_ps.n.rise     ) game_menu_hide_mouse();
+		if ( hud_ps.s.rise     ) game_menu_hide_mouse();
+		if ( app_input.get.key_w     .rise ) game_menu_hide_mouse();
+		if ( app_input.get.key_s     .rise ) game_menu_hide_mouse();
+		if ( app_input.get.key_up    .rise ) game_menu_hide_mouse();
+		if ( app_input.get.key_down  .rise ) game_menu_hide_mouse();
+		if ( app_input.get.key_escape.rise ) game_menu_hide_mouse();
+		if ( app_input.get.key_space .rise ) game_menu_hide_mouse();
+		if ( app_input.get.key_back  .rise ) game_menu_hide_mouse();
 
 		if ( app_input.get.key_mouse_l.rise ) hud_on_select( game.menu[0] );
 	} else {
-		if ( not hud_ps.start and hud_ps_previous.start ) hud_on_start     ( game.menu[0] );
-		if ( not hud_ps.a     and hud_ps_previous.a     ) hud_on_select    ( game.menu[0] );
-		if ( not hud_ps.b     and hud_ps_previous.b     ) game_menu_action_back( game.menu[0] );
-		if ( app_input.get.key_escape.rise              ) game_menu_action_back( game.menu[0] );
-		if ( app_input.get.key_back.rise                ) game_menu_action_back( game.menu[0] );
-		if ( hud_ps.n and not hud_ps_previous.n         ) hud_on_n         ( game.menu[0] );
-		if ( app_input.get.key_w.fall                   ) hud_on_n         ( game.menu[0] );
-		if ( app_input.get.key_up.fall                  ) hud_on_n         ( game.menu[0] );
-		if ( hud_ps.s and not hud_ps_previous.s         ) hud_on_s         ( game.menu[0] );
-		if ( app_input.get.key_s.fall                   ) hud_on_s         ( game.menu[0] );
-		if ( app_input.get.key_down.fall                ) hud_on_s         ( game.menu[0] );
-		if ( hud_ps.w and not hud_ps_previous.w         ) hud_on_w         ( game.menu[0] );
-		if ( app_input.get.key_a.fall                   ) hud_on_w         ( game.menu[0] );
-		if ( app_input.get.key_left.fall                ) hud_on_w         ( game.menu[0] );
-		if ( hud_ps.e and not hud_ps_previous.e         ) hud_on_e         ( game.menu[0] );
-		if ( app_input.get.key_d.fall                   ) hud_on_e         ( game.menu[0] );
-		if ( app_input.get.key_right.fall               ) hud_on_e         ( game.menu[0] );
+		if ( hud_ps.start.rise             ) hud_on_start         ( game.menu[0] );
+		if ( hud_ps.a.rise                 ) hud_on_select        ( game.menu[0] );
+		if ( hud_ps.b.rise                 ) game_menu_action_back( game.menu[0] );
+		if ( app_input.get.key_escape.rise ) game_menu_action_back( game.menu[0] );
+		if ( app_input.get.key_back.rise   ) game_menu_action_back( game.menu[0] );
+		if ( hud_ps.n.fall                 ) hud_on_n             ( game.menu[0] );
+		if ( app_input.get.key_w.fall      ) hud_on_n             ( game.menu[0] );
+		if ( app_input.get.key_up.fall     ) hud_on_n             ( game.menu[0] );
+		if ( hud_ps.s.fall                 ) hud_on_s             ( game.menu[0] );
+		if ( app_input.get.key_s.fall      ) hud_on_s             ( game.menu[0] );
+		if ( app_input.get.key_down.fall   ) hud_on_s             ( game.menu[0] );
+		if ( hud_ps.w.fall                 ) hud_on_w             ( game.menu[0] );
+		if ( app_input.get.key_a.fall      ) hud_on_w             ( game.menu[0] );
+		if ( app_input.get.key_left.fall   ) hud_on_w             ( game.menu[0] );
+		if ( hud_ps.e.fall                 ) hud_on_e             ( game.menu[0] );
+		if ( app_input.get.key_d.fall      ) hud_on_e             ( game.menu[0] );
+		if ( app_input.get.key_right.fall  ) hud_on_e             ( game.menu[0] );
 	}
 
 	hud_ps_previous = hud_ps;
 }
 
-void game_menu_update_1() {
+void game_menu_step_1() {
 	if ( split == game_split_solo ) return;
-	hud_ps_1 = update_pad_i(1);
+	hud_ps_1 = pad_step_i( 1, hud_ps_1_previous );
 
-	if ( not hud_ps_1.start   and hud_ps_1_previous.start ) hud_on_start     ( game.menu[1] );
-	if ( not hud_ps_1.a       and hud_ps_1_previous.a     ) hud_on_select    ( game.menu[1] );
-	if ( not hud_ps_1.b       and hud_ps_1_previous.b     ) game_menu_action_back( game.menu[1] );
-	if ( hud_ps_1.n and not hud_ps_1_previous.n           ) hud_on_n         ( game.menu[1] );
-	if ( hud_ps_1.s and not hud_ps_1_previous.s           ) hud_on_s         ( game.menu[1] );
+	if ( hud_ps_1.start.rise ) hud_on_start         ( game.menu[1] );
+	if ( hud_ps_1.a.rise     ) hud_on_select        ( game.menu[1] );
+	if ( hud_ps_1.b.rise     ) game_menu_action_back( game.menu[1] );
+	if ( hud_ps_1.n.fall     ) hud_on_n             ( game.menu[1] );
+	if ( hud_ps_1.s.fall     ) hud_on_s             ( game.menu[1] );
 
 	hud_ps_1_previous = hud_ps_1;
 }
