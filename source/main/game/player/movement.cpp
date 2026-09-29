@@ -43,8 +43,15 @@ void game_player_step_steering( game_player &player ) {
 			break;
 		}
 
-		if ( player.torso == torso_aim and item.type.i != item_none ) {
+		if ( player.torso == torso_aim ) {
 			target_speed = turn_speed_aim;
+		}
+
+		float turn_accel_actual = turn_accel;
+
+		if ( player.torso == torso_hold ) {
+			target_speed = target_speed * 2;
+			turn_accel_actual = turn_accel * 2;
 		}
 
 		target_speed *= player.pad.joy_1.x + player.pad.gyro.x;

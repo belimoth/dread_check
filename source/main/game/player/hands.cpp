@@ -5,6 +5,7 @@
 #include <zed/camera.h>
 
 void game_player_queue_interrupt( game_player &player );
+void game_player_torso_after( game_player &player );
 
 void game_player_hands_unholster( game_player &player ) {
 	zed_camera camera = game.data.camera[ player.i ];
@@ -15,10 +16,7 @@ void game_player_hands_unholster( game_player &player ) {
 	player.gun_rig_1.rotation.x = camera.rotation.x + 90;
 	player.gun_rig_1.rotation.y = camera.rotation.y - 90;
 
-	if ( not player.pad.lb.held and not player.pad.rb.held ) player.torso = torso_throw;
-	if (     player.pad.lb.held and not player.pad.rb.held ) player.torso = torso_hold;
-	if ( not player.pad.lb.held and     player.pad.rb.held ) player.torso = torso_hip;
-	if (     player.pad.lb.held and     player.pad.rb.held ) player.torso = torso_aim;
+	game_player_torso_after( player );
 }
 
 game_item &game_player_hands_get_item( game_player &player ) {

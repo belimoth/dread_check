@@ -55,6 +55,7 @@ void game_item_init() {
 
 bool game_item_can( game_item item, game_action action ) {
 	if ( action == action_throw ) return true;
+	if ( action == action_push  ) return true;
 
 	switch( item.type.i ) {
 		case item_none:
@@ -306,7 +307,6 @@ void game_item_fire_offhand( game_player &player ) {
 	game_bullet_make( player );
 }
 
-
 void game_item_slide_open( game_player &player ) {
 	game_item &item = game_player_hands_get_item( player );
 	game_player_stance_relax( player );
@@ -378,6 +378,11 @@ void game_item_throw( game_player &player ) {
 	}
 }
 
+void game_item_push( game_player &player ) {
+	player.rig.recoil_0 = 16;
+	player.hint = hint_push;
+}
+
 void game_item_do( game_player &player, game_action action ) {
 	switch( action ) {
 		case action_shoot:       game_item_fire       ( player ); break;
@@ -385,6 +390,7 @@ void game_item_do( game_player &player, game_action action ) {
 		case action_slide_close: game_item_slide_close( player ); break;
 		case action_reload:      game_item_reload     ( player ); break;
 		case action_throw:       game_item_throw      ( player ); break;
+		case action_push:        game_item_push       ( player ); break;
 	}
 }
 
@@ -478,6 +484,12 @@ void game_item_reload( game_item &item, bool silent ) {
 int time_slide_open = 0;
 
 void game_item_finish( game_player &player, game_item &item, game_action action, bool silent = false ) {
+	if ( action == action_push ) {
+		if ( player.hint == hint_push ) player.hint = hint_none;
+		player.hint = hint_none;
+		return;
+	}
+
 	switch( item.type.i ) {
 		case item_none:
 		case item_torch:
