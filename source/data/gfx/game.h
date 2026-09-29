@@ -78,6 +78,7 @@ zed_mesh mesh_ciws;
 zed_mesh mesh_light;
 zed_mesh mesh_chute;
 zed_mesh mesh_bag;
+zed_mesh mesh_bike;
 
 // enemy
 
@@ -219,6 +220,10 @@ void data_gfx_game_init() {
 	zed_mesh_new( mesh_light,        "data/model/light.obj",     1.0 );
 	zed_mesh_new( mesh_chute,        "data/model/chute.obj",     1.0 );
 	zed_mesh_new( mesh_bag,          "data/model/bag.obj",       1.0 );
+
+	// bike
+
+	zed_mesh_new( mesh_bike, "data/model/bike_5000.obj", 1.0 );
 
 	// enemy
 

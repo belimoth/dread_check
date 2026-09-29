@@ -107,10 +107,12 @@ void el_column_play() {
 
 	el_header( "PLAY" );
 	el_play();
-	el_label( "Game: dread_check.exe" );
-	el_label( "Origin: Local" );
+	el_header( "GAME" );
+	el_label( "dread_check.exe" );
+	el_label( "Origin: Source" );
 	el_label( "Edition: Alpha" );
 	el_label( "Version: ############" );
+	el_header( "SESSION" );
 
 	el_finish;
 }
