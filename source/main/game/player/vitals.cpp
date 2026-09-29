@@ -21,7 +21,7 @@ void game_player_vitals_stress( game_player &player, int damage ) {
 	player.t_stress_damage_flash = 1.0;
 }
 
-void game_player_vitals_step( game_player &player ) {
+void game_player_step_vitals( game_player &player ) {
 	// exertn
 
 	if ( player.did_sprint ) {

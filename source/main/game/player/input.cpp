@@ -69,45 +69,55 @@ void client_update_player() {
 	if ( game.menu[1].state.page ) game_menu_step_1();
 }
 
-void game_player_input_step_lb_rb( game_player &player ) {
+void game_player_step_input_lb_rb( game_player &player ) {
 	switch ( player.torso ) {
 		case torso_throw:
-		if ( player.pad.rb.fall and not player.pad.lb.held ) player.torso = torso_hip;
-		if ( player.pad.rb.fall and     player.pad.lb.held ) player.torso = torso_aim;
+		if (     player.pad.rb.fall and not player.pad.lb.fall ) player.torso = torso_hip;
+		if ( not player.pad.rb.fall and     player.pad.lb.fall ) player.torso = torso_hold;
+		if (     player.pad.rb.fall and     player.pad.lb.fall ) player.torso = torso_aim;
 		break;
 
 		case torso_hip:
-		if ( not player.pad.rb.held and not player.pad.lb.held ) player.torso = torso_throw;
-		if (     player.pad.rb.held and     player.pad.lb.held ) player.torso = torso_aim;
-		break;
-
-		case torso_aim:
-		if (     player.pad.rb.held and not player.pad.lb.held ) player.torso = torso_hip;
-		if ( not player.pad.rb.held and     player.pad.lb.held ) player.torso = torso_hold;
+		if (     player.pad.rb.rise and not player.pad.lb.fall ) player.torso = torso_throw;
+		if ( not player.pad.rb.rise and     player.pad.lb.fall ) player.torso = torso_aim;
+		if (     player.pad.rb.rise and     player.pad.lb.fall ) player.torso = torso_hold;
 		break;
 
 		case torso_hold:
-		if ( not player.pad.rb.held and not player.pad.lb.held ) player.torso = torso_throw;
+		if (     player.pad.rb.fall and not player.pad.lb.rise ) player.torso = torso_aim;
+		if ( not player.pad.rb.fall and     player.pad.lb.rise ) player.torso = torso_throw;
+		if (     player.pad.rb.fall and     player.pad.lb.rise ) player.torso = torso_hip;
 		break;
 
-		default:
-		player.torso = torso_throw;
+		case torso_aim:
+		if (     player.pad.rb.rise and not player.pad.lb.rise ) player.torso = torso_hold;
+		if ( not player.pad.rb.rise and     player.pad.lb.rise ) player.torso = torso_hip;
+		if (     player.pad.rb.rise and     player.pad.lb.rise ) player.torso = torso_throw;
+		break;
 	}
+
+	if ( player.torso == torso_aim and player.stance == stance_jog ) player.stance = stance_walk;
+	if ( player.torso == torso_aim and player.stance == stance_run ) player.stance = stance_walk;
 }
 
-void game_player_input_step_lt_rt( game_player &player ) {
-	if ( player.pad.rt == 1 and player.pad_previous.rt != 1 ) {
-		switch ( player.torso ) {
-			case torso_hip:
-			case torso_aim:
-			case torso_hold:
-			case torso_grab:
-			game_item_try( player, action_shoot );
-			break;
+void game_player_step_input_lt_rt( game_player &player ) {
+	switch ( player.torso ) {
+		case torso_hip:
+		case torso_aim:
+		case torso_hold:
+		case torso_grab:
+		if( player.pad.rt == 1 and player.pad_previous.rt != 1 ) game_item_try( player, action_shoot );
+		break;
 
-			case torso_throw:
-			break;
+		case torso_throw:
+
+		if ( player.pad.rt == 0 and player.pad_previous.rt > 0.7 ) {
+			game_item_try( player, action_throw );
+		} else {
+			player.rig.recoil_0 = player.pad.rt * 12;
 		}
+
+		break;
 	}
 
 	if ( player.pad.rt == 0 and player.pad_previous.rt != 0 ) {
@@ -162,7 +172,7 @@ void game_player_input_step_lt_rt( game_player &player ) {
 	}
 }
 
-void game_player_input_step_ab_xy( game_player &player ) {
+void game_player_step_input_ab_xy( game_player &player ) {
 	if ( not player.pad.a.held and not player.pad.b.held and not player.pad.x.held and not player.pad.y.held ) {
 		if ( player.pad.joy_1.z > 0 ) game_player_hands_switch_primary_up( player );
 		if ( player.pad.joy_1.z < 0 ) game_player_hands_switch_primary_down( player );
@@ -180,9 +190,9 @@ void game_player_input_step_ab_xy( game_player &player ) {
 	}
 }
 
-void game_player_input_step( game_player &player ) {
-	game_player_input_step_lt_rt( player );
-	game_player_input_step_lb_rb( player );
-	game_player_input_step_ab_xy( player );
+void game_player_step_input( game_player &player ) {
+	game_player_step_input_lt_rt( player );
+	game_player_step_input_lb_rb( player );
+	game_player_step_input_ab_xy( player );
 	player.pad_previous = player.pad;
 }

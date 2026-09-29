@@ -19,7 +19,7 @@ void game_player_init() {
 	}
 }
 
-void game_player_movement_step( game_player &player ) {
+void game_player_step_movement( game_player &player ) {
 	zed_camera &camera = game.data.camera[ player.i ];
 	float3 velocity = player.object.velocity;
 
@@ -47,7 +47,7 @@ void game_player_movement_step( game_player &player ) {
 	player.object.position.y += player.object.velocity.z;
 }
 
-void game_player_navigation_step( game_player &player ) {
+void game_player_step_navigation( game_player &player ) {
 	if ( game.scene != scene_game ) return;
 
 	player.object.nav = 0;
@@ -96,7 +96,7 @@ void game_player_navigation_step( game_player &player ) {
 void game_player_step_after_movement( game_player &player ) {
 	if ( player.stance == stance_run and player.pad.joy_0.y < 0.7 ) {
 		player.stance = stance_jog;
-		player.torso  = torso_hip;
+		// player.torso  = torso_hip;
 		game_player_hands_unholster( player );
 	}
 
@@ -181,21 +181,21 @@ void game_player_step( game_player &player ) {
 
 	//
 
-	game_player_stance_step    ( player );
-	game_player_steering_step  ( player );
-	game_player_gun_rig_step   ( player );
+	game_player_step_stance    ( player );
+	game_player_step_steering  ( player );
+	game_player_step_gun_rig   ( player );
 	game_player_physics_before ( player );
-	game_player_movement_step  ( player );
+	game_player_step_movement  ( player );
 	game_player_physics_after  ( player );
-	game_player_navigation_step( player );
+	game_player_step_navigation( player );
 
 	// after
 
 	game_player_step_after_movement( player );
-	game_player_queue_step         ( player );
-	game_player_input_step         ( player );
-	game_player_vitals_step        ( player );
-	game_player_rig_step           ( player );
+	game_player_step_queue         ( player );
+	game_player_step_input         ( player );
+	game_player_step_vitals        ( player );
+	game_player_step_rig           ( player );
 
 	//
 

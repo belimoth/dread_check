@@ -41,7 +41,7 @@ void scene_game_start() {
 
 	for ( int i = 0; i < game_player_count_max; i++ ) {
 		game_player &player = game.data.player[i];
-		player.torso = torso_hip;
+		player.torso = torso_throw;
 		player.hands = {};
 		player.hands.j = 2;
 		player.hands.item[ player.hands.item_i++ ].type = item_type[ item_none             ];

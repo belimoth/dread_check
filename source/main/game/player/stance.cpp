@@ -29,13 +29,13 @@ bool player_stance_is_ready( game_player &player ) {
 	return true;
 }
 
-void game_player_stance_step( game_player &player ) {
+void game_player_step_stance( game_player &player ) {
 	game_player_stance_skid_step( player );
 	game_player_stance_a_step( player );
 	game_player_stance_b_step( player );
 	game_player_stance_l_step( player );
+	game_player_stance_r_step( player );
 	game_player_stance_y_step( player );
 	game_player_stance_x_step( player );
 	game_mouse.z = 0; // todo
-	game_player_stance_r_step( player );
 }

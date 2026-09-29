@@ -20,16 +20,5 @@ bool game_player_stance_can_jump( game_player &player ) {
 void game_player_stance_r_step( game_player &player ) {
 	if ( not game_player_stance_can_jump( player ) ) return; // note
 
-	if ( player.pad.rs.fall ) {
-		if ( player.torso != torso_aim ) {
-			if ( player.action == action_none ) {
-				player.torso = torso_aim;
-				if ( player.stance == stance_reach ) player.stance = stance_walk;
-				if ( player.stance == stance_run   ) player.stance = stance_walk;
-				if ( player.stance == stance_jog   ) player.stance = stance_walk;
-			}
-		} else {
-			player.torso = torso_hip;
-		}
-	}
+	// todo
 }

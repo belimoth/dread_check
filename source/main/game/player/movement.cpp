@@ -8,7 +8,7 @@ void game_player_update_turn_speed_temp() {
 
 }
 
-void game_player_steering_step( game_player &player ) {
+void game_player_step_steering( game_player &player ) {
 	game_item &item = game_player_hands_get_item( player );
 	{
 		float target_speed = 0;

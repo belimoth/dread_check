@@ -18,14 +18,12 @@ bool game_player_stance_is_airborne( game_player &player ) {
 bool game_player_stance_relax( game_player &player ) {
 	if ( player.stance == stance_run ) {
 		player.stance = stance_jog;
-		player.torso  = torso_hip;
 		game_player_hands_unholster( player );
 		return true;
 	}
 
 	if ( player.stance == stance_reach ) {
 		player.stance = stance_walk;
-		player.torso  = torso_hip;
 		game_player_hands_unholster( player );
 		return true;
 	}
@@ -35,7 +33,6 @@ bool game_player_stance_relax( game_player &player ) {
 
 void game_player_stance_skid( game_player &player ) {
 	if ( player.stance == stance_run ) {
-		player.torso  = torso_hip;
 		game_player_hands_unholster( player );
 	}
 
@@ -48,8 +45,8 @@ void game_player_stance_sprint( game_player &player ) {
 			player.stance = stance_walk;
 		} else {
 			player.stance     = stance_jog;
-			player.torso      = torso_hip;
 			player.did_sprint = true;
+			game_player_hands_unholster( player );
 		}
 	} else {
 		player.stance     = stance_run;
@@ -71,7 +68,6 @@ void game_player_stance_unsprint( game_player &player ) {
 		// return;
 
 		player.stance = stance_jog;
-		player.torso  = torso_hip;
 		game_player_hands_unholster( player );
 	}
 }
@@ -90,7 +86,6 @@ void game_player_stance_skid_step( game_player &player ) {
 
 		case stance_slide_supine:
 		player.stance = stance_supine;
-		player.torso  = torso_hip;
 		game_player_hands_unholster( player );
 		break;
 

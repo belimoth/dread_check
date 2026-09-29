@@ -33,7 +33,7 @@ motion_result motion_sprint_2( float x, float v, float xt, float f, float pd, fl
 	return motion_spring( x, v, xt, zeta, omega, h );
 }
 
-void game_player_gun_rig_step( game_player &player ) {
+void game_player_step_gun_rig( game_player &player ) {
 	zed_camera &camera = game.data.camera[ player.i ];
 
 	{
@@ -73,7 +73,7 @@ void game_player_gun_rig_step( game_player &player ) {
 	}
 }
 
-void game_player_rig_step( game_player &player ) {
+void game_player_step_rig( game_player &player ) {
 	zed_camera &camera = game.data.camera[ player.i ];
 
 	//

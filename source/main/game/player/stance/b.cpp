@@ -169,7 +169,6 @@ void game_player_stance_spin_left( game_player &player ) {
 	}
 
 	camera.rotation.y -= 90;
-	player.torso = torso_hip;
 	// player.hint = hint_spin;
 	game_player_hands_unholster( player );
 

@@ -17,7 +17,6 @@ void game_player_stance_land( game_player &player, game_player_stance stance ) {
 	if ( player.object.nav ) ground = player.object.nav->p.z;
 	player.object.position.y = ground;
 	player.object.velocity.z = 0;
-	player.torso = torso_hip;
 	game_player_hands_unholster( player );
 	player.stance = stance;
 

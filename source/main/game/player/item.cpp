@@ -54,6 +54,8 @@ void game_item_init() {
 }
 
 bool game_item_can( game_item item, game_action action ) {
+	if ( action == action_throw ) return true;
+
 	switch( item.type.i ) {
 		case item_none:
 		return false;
@@ -332,7 +334,7 @@ void game_item_reload( game_player &player ) {
 	if ( item.slide == slide_open and item.chamber == chamber_empty ) {
 		// note chamber reload doesn't lower aim
 	} else {
-		if ( player.torso == torso_aim ) player.torso = torso_hip;
+		// if ( player.torso == torso_aim ) player.torso = torso_hip;
 	}
 
 	player.action       = action_reload;
@@ -366,12 +368,23 @@ void game_item_reload( game_player &player ) {
 	}
 }
 
+void game_item_throw( game_player &player ) {
+	game_item &item = game_player_hands_get_item( player );
+
+	if ( player.hands.which == 0 ) {
+		player.hands.i = 0;
+	} else {
+		player.hands.j = 0;
+	}
+}
+
 void game_item_do( game_player &player, game_action action ) {
 	switch( action ) {
 		case action_shoot:       game_item_fire       ( player ); break;
 		case action_slide_open:  game_item_slide_open ( player ); break;
 		case action_slide_close: game_item_slide_close( player ); break;
 		case action_reload:      game_item_reload     ( player ); break;
+		case action_throw:       game_item_throw      ( player ); break;
 	}
 }
 
@@ -523,7 +536,7 @@ void game_item_finish( game_player &player, game_item &item, game_action action,
 //
 
 
-void game_player_queue_step( game_player &player ) {
+void game_player_step_queue( game_player &player ) {
 	game_item &item = game_player_hands_get_item( player );
 
 	if ( player.action != action_reload and not ( player.action_queue_length > 0 and player.action_queue[0] == action_reload ) ) {
