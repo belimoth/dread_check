@@ -1,3 +1,0 @@
-#!/bin/bash
-
-find /a/local/vend -type f

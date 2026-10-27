@@ -1,0 +1,52 @@
+#!/bin/bash
+
+set -o errexit
+
+[[ $( command -v butler ) ]] || { echo error: butler required; exit 1; }
+
+clear
+
+#
+
+mode=${1:-"staging"}
+
+[[ $mode == "staging" || $mode == "production" ]] || {
+	echo error: unrecognized mode "$mode"
+	exit 1
+}
+
+chan=${2:-"alpha"}
+
+[[ $chan == "alpha" || $chan == "bravo" || $chan == "super" ]]
+
+#
+
+rm --recursive --force /a/null/publish/$mode
+mkdir --parents $_
+cd $_
+
+[[ $mode == "staging" ]] && {
+	build debug
+	build profile
+}
+
+build release
+
+[[ $mode == "staging" ]] && {
+	cp /a/null/build/debug/dread_check.exe   ./dread_check_debug.exe
+	cp /a/null/build/profile/dread_check.exe ./dread_check_profile.exe
+	cp /a/null/vend/bin/ds5w_X64.dll         .
+}
+
+cp /a/null/build/release/dread_check.exe  .
+cp /a/static/.itch.toml                    .
+cp --recursive /a/null/build/release/data ./data
+
+#
+
+BUTLER_API_KEY=$( cat ~/desktop/system/key/butler-belimoth )
+
+butler validate /a/null/publish/$mode
+
+[[ $mode == "staging"    ]] && butler push /a/null/publish/staging    "belimoth/dread-check-staging:windows"
+[[ $mode == "production" ]] && butler push /a/null/publish/production "belimoth/dread-check:windows"

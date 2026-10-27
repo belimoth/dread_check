@@ -1,0 +1,14 @@
+#!/bin/bash
+
+set -o errexit
+
+[[ $( command -v xxhsum ) ]] || { echo error: xxhsum required; exit 1; }
+
+cd /z/belimoth/data/draugb/data
+mkdir --parents /a/null/index/archive
+find . -type f -print0 | xargs -0 xxhsum > /a/null/index/archive/data.txt
+
+cd /a/null/data
+find . -type f -print0 | xargs -0 xxhsum > /a/null/index/data.txt
+
+code --diff /a/null/index/archive/data.txt /a/null/index/data.txt

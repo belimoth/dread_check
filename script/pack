@@ -1,3 +1,0 @@
-#!/bin/bash
-
-zip -0 --recurse-paths /a/local/build/release/data.zip /a/data --exclude .\\data\\debug\\*

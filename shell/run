@@ -1,0 +1,24 @@
+#!/bin/bash
+
+set -o errexit
+
+[[ $SHLVL -gt 2 ]] || clear
+
+echo running...
+
+#
+
+[[ -d /a/null/data ]] || { echo error: missing data; exit 1; }
+
+rm --recursive --force /a/null/run
+mkdir --parents $_
+cd $_
+
+rm --recursive --force        /a/null/data/shader
+cp --recursive /a/code/shader /a/null/data
+
+ln --symbolic /a/null/data                          .
+ln --symbolic /a/null/vend/bin/ds5w_x64.dll         .
+ln --symbolic /a/null/vend/bin/discord_game_sdk.dll .
+
+/a/null/build/profile/dread_check.exe "$@"

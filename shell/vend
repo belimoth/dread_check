@@ -1,0 +1,32 @@
+#!/bin/bash
+
+set -o errexit
+
+[[ $SHLVL -gt 2 ]] || clear
+
+echo vending...
+
+#
+
+rm --recursive --force /a/null/vend
+cp --recursive /a/vend /a/null
+
+cp             /a/null/vcpkg/installed/x64-windows-static/include/argh.h       /a/null/vend/include/argh.h
+cp --recursive /a/null/vcpkg/installed/x64-windows-static/include/curl         /a/null/vend/include/curl
+cp --recursive /a/null/vcpkg/installed/x64-windows-static/include/enet         /a/null/vend/include/enet
+cp             /a/null/vcpkg/installed/x64-windows-static/include/ini.h        /a/null/vend/include/ini.h
+cp             /a/null/vcpkg/installed/x64-windows-static/include/xxhash.h     /a/null/vend/include/xxhash.h
+
+cp             /a/null/vcpkg/installed/x64-windows-static/lib/brotlicommon.lib /a/null/vend/lib/brotlicommon.lib
+cp             /a/null/vcpkg/installed/x64-windows-static/lib/brotlidec.lib    /a/null/vend/lib/brotlidec.lib
+cp             /a/null/vcpkg/installed/x64-windows-static/lib/brotlienc.lib    /a/null/vend/lib/brotlienc.lib
+cp             /a/null/vcpkg/installed/x64-windows-static/lib/cpprest_2_10.lib /a/null/vend/lib/cpprest_2_10.lib
+cp             /a/null/vcpkg/installed/x64-windows-static/lib/inih.lib         /a/null/vend/lib/inih.lib
+cp             /a/null/vcpkg/installed/x64-windows-static/lib/inireader.lib    /a/null/vend/lib/inireader.lib
+cp             /a/null/vcpkg/installed/x64-windows-static/lib/libcurl.lib      /a/null/vend/lib/libcurl.lib
+cp             /a/null/vcpkg/installed/x64-windows-static/lib/presentdata.lib  /a/null/vend/lib/presentdata.lib
+cp             /a/null/vcpkg/installed/x64-windows-static/lib/xxhash.lib       /a/null/vend/lib/xxhash.lib
+cp             /a/null/vcpkg/installed/x64-windows-static/lib/zlib.lib         /a/null/vend/lib/zlib.lib
+
+cp --recursive /a/null/vcpkg/installed/x64-windows/include/discord-game-sdk    /a/null/vend/include/discord
+cp             /a/null/vcpkg/installed/x64-windows/lib/discord_game_sdk.lib    /a/null/vend/lib/discord_game_sdk.dll.lib

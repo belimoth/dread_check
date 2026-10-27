@@ -1,0 +1,23 @@
+#!/bin/bash
+
+set -o errexit
+
+rm --recursive --force /a/null/print; mkdir --parents /a/null/print; touch /a/null/print/all.html
+# code /a/null/print/all.html
+echo "<!doctype html><html lang=en-us><head><meta charset=utf-8><style> code{ break-after: page; width: 80ch; }</style><body>" >> /a/null/print/all.html
+
+function each() {
+	echo $1               >> /a/null/print/all.html
+	echo "<pre><code>"    >> /a/null/print/all.html
+	cat $1                >> /a/null/print/all.html
+	echo "</code></pre>"  >> /a/null/print/all.html
+}
+
+export -f each
+
+cd /a//source
+
+find -type f -name "*.cpp" -exec bash -c 'each "$@"' bash {} \;
+find -type f -name "*.o"   -exec bash -c 'each "$@"' bash {} \;
+
+# powershell -command "Start-Process -FilePath 'A:\null\print\all.html' -Verb Print"

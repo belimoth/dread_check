@@ -1,0 +1,8 @@
+a:/code/source/main.cpp
+-nologo
+-GR-
+-O1
+-D zed_mode_release
+-I a:/code/include
+-I a:/null/vend/include
+-link -libpath:a:/null/vend/lib -incremental:no -subsystem:windows -out:dread_check.exe

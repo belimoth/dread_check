@@ -32,7 +32,7 @@ These can edit and save dds textures:
 3. Run the `start` script:
 
 ```sh
-script/start
+shell/start
 ```
 
 > **NOTE** <p> The `start` script assumes that the `A:` drive is available for `subst`
@@ -49,17 +49,17 @@ vcpkg
 # install dependencies with vcpkg
 install
 
-# rebuild local/vend
+# rebuild null/vend
 vend
 
 # assets
-script/data/font
-script/data/skybox
+shell/data/font
+shell/data/skybox
 
 # checks
-script/check/data
-script/check/script
-script/check/shader
+shell/check/data
+shell/check/script
+shell/check/shader
 
 # building
 

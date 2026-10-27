@@ -5,10 +5,10 @@
 			"name": "(Windows) Launch",
 			"type": "cppvsdbg",
 			"request": "launch",
-			"program": "a:/local/build/debug/dread_check.exe",
+			"program": "a:/null/build/debug/dread_check.exe",
 			"args": [ "--debug" ],
 			"stopAtEntry": false,
-			"cwd": "a:/local/run",
+			"cwd": "a:/null/run",
 			"environment": [],
 			"logging": {
 				"moduleLoad": false
