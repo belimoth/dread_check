@@ -73,7 +73,8 @@ void game_menu_item_status( game_menu &menu, float x, float y ) {
 	// 	game_menu_label( menu, "Gamepad recommended", x, y );
 	// }
 
-	game_menu_item( menu, name_status[menu_status_i], x, y, game_menu_cb { toggle_status(); });
+	// game_menu_item( menu, name_status[menu_status_i], x, y, game_menu_cb { toggle_status(); });
+	game_menu_item( menu, name_status[menu_status_i], x, y, game_menu_cb { game_menu_push( menu, game_menu_page_status ); });
 }
 
 void game_menu_item_face( game_menu &menu, float x, float y, game_menu_cb_t action = {} ) {

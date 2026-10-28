@@ -21,6 +21,8 @@ enum game_menu_page {
 	game_menu_page_play_adventure_campaign,
 	game_menu_page_play_adventure_chapter,
 
+	game_menu_page_status,
+
 	game_menu_page_roster,
 	game_menu_page_roster_character,
 
@@ -79,7 +81,7 @@ int menu_privacy_i  = 0;
 string name_chat[] = { "Any", "Voice", "Text", "None" };
 int menu_chat_i   = 0;
 
-string name_status[] = { "Online", "LAN", "Offline" };
+string name_status[] = { "subhelion.com", "Local", "Offline" };
 int menu_status_i = 0;
 
 int menu_name_0_i = 202;

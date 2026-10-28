@@ -255,6 +255,15 @@ void game_menu_main( game_menu &menu, game_menu_signal signal ) {
 			game_menu_item_squad ( menu, x, 40 );
 		} break;
 
+		case game_menu_page_status: {
+			for ( int i = 0; i < array_count( name_status ); i++ ) {
+				i_static_temp = i;
+				game_menu_item( menu, name_status[i], x, y + 20 * i, game_menu_cb { menu_status_i = i_static_temp; game_menu_pop( menu ); });
+			}
+
+			game_menu_item_back  ( menu, x,  0 );
+		} break;
+
 		case game_menu_page_roster: {
 			if ( signal == game_menu_signal_hover ) menu_roster_hover = false;
 			y = 40;
