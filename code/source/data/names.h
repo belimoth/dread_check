@@ -39,7 +39,7 @@ char *names[] = {
 	"Ash",
 	"Ashley",
 	"Aster",
-	"August"
+	"August",
 	"Austin",
 	"Autumn",
 	"Avery",
@@ -511,7 +511,7 @@ char *names[] = {
 	"Velma",
 	"Vic",
 	"Victoria",
-	"Vince"
+	"Vince",
 	"Vincent",
 	"Vinny",
 	"Violet",
